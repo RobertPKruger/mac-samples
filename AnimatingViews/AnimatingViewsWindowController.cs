@@ -3,13 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
-using MonoMac.Foundation;
-using MonoMac.AppKit;
-using MonoMac.CoreAnimation;
+using Foundation;
+using AppKit;
+using CoreAnimation;
+using CoreGraphics;
 
 namespace AnimatingViews
 {
-	public partial class AnimatingViewsWindowController : MonoMac.AppKit.NSWindowController
+	public partial class AnimatingViewsWindowController : AppKit.NSWindowController
 	{
 		private enum Layout {
 			ColumnLayout,
@@ -61,7 +62,7 @@ namespace AnimatingViews
 		// Action for change layout Matrix
 		partial void changeLayout (NSMatrix sender)
 		{
-			LayoutStyle = (Layout)sender.SelectedTag;
+			LayoutStyle = (Layout)((int)sender.SelectedTag);
 			layout ();
 			
 		} 
@@ -94,33 +95,33 @@ namespace AnimatingViews
 		}
 		
 		/* This method returns a rect that is integral in base coordinates. */
-		private RectangleF integralRect (RectangleF rect) 
-		{
-			// missing NSIntegralRect
-			//return simpleView.ConvertRectFromBase(NSIntegralRect(simpleView.ConvertRectToBase(rect)));
-			return simpleView.ConvertRectFromBase(simpleView.ConvertRectToBase(rect));	
-		}
+//		private RectangleF integralRect (RectangleF rect) 
+//		{
+//			// missing NSIntegralRect
+//			//return simpleView.ConvertRectFromBase(NSIntegralRect(simpleView.ConvertRectToBase(rect)));
+//			return simpleView.ConvertRectFromBase(simpleView.ConvertRectToBase(rect));	
+//		}
 		
 		// Layout the sub views
 		private void layout ()
 		{
 			NSView[] subviews = simpleView.Subviews;
-			PointF curPoint;
+			CGPoint curPoint;
 				
 			switch (LayoutStyle){
 			case Layout.ColumnLayout:
-				curPoint = new PointF(simpleView.Bounds.Size.Width / 2.0f, 0.0f);
+				curPoint = new CGPoint(simpleView.Bounds.Size.Width / 2.0f, 0.0f);
 				foreach (NSView subview in subviews) {
-					RectangleF frame = new RectangleF(curPoint.X - BOX_WIDTH /2.0f, curPoint.Y, BOX_WIDTH, BOX_HEIGHT);
+					CGRect frame = new CGRect(curPoint.X - BOX_WIDTH /2.0f, curPoint.Y, BOX_WIDTH, BOX_HEIGHT);
 					animateView(subview, frame);
 					curPoint.Y += frame.Size.Height + SEPARATION;
 				}
 				break;
 
 			case Layout.RowLayout:
-				curPoint = new PointF(0.0f , simpleView.Bounds.Size.Height / 2.0f);
+				curPoint = new CGPoint(0.0f , simpleView.Bounds.Size.Height / 2.0f);
 				foreach (NSView subview in subviews) {
-					RectangleF frame = new RectangleF(curPoint.X, curPoint.Y - BOX_HEIGHT /2.0f, BOX_WIDTH, BOX_HEIGHT);
+					CGRect frame = new CGRect(curPoint.X, curPoint.Y - BOX_HEIGHT /2.0f, BOX_WIDTH, BOX_HEIGHT);
 					animateView(subview, frame);
 					curPoint.X += frame.Size.Width + SEPARATION;
 				}
@@ -132,7 +133,7 @@ namespace AnimatingViews
 				
 				int idx = 0;
 				foreach (NSView subview in subviews) {
-					RectangleF frame = new RectangleF(curPoint.X, curPoint.Y, BOX_WIDTH, BOX_HEIGHT);
+					CGRect frame = new CGRect(curPoint.X, curPoint.Y, BOX_WIDTH, BOX_HEIGHT);
 					
 					animateView(subview, frame);
 					curPoint.X += frame.Size.Width + SEPARATION;
@@ -148,7 +149,7 @@ namespace AnimatingViews
 		}
 		
 		// Helper method to animate the sub view
-		private void animateView(NSView subView, RectangleF toFrame) 
+		private void animateView(NSView subView, CGRect toFrame) 
 		{
 #if true
 			// Simple animation: assign the new value, and let CoreAnimation
