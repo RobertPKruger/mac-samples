@@ -3,19 +3,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
-using MonoMac.Foundation;
-using MonoMac.AppKit;
-using MonoMac.CoreAnimation;
-using MonoMac.CoreGraphics;
+using Foundation;
+using AppKit;
+using CoreAnimation;
+using CoreGraphics;
 
 namespace CustomizeAnimation
 {
-	public partial class BaseView : MonoMac.AppKit.NSView
+	public partial class BaseView : AppKit.NSView
 	{
 		NSImageView mover;
 		bool isRight;
-		PointF leftPosition;
-		PointF rightPosition;
+		CGPoint leftPosition;
+		CGPoint rightPosition;
 		
 		public BaseView (IntPtr handle) : base(handle) {}
 
@@ -38,16 +38,16 @@ namespace CustomizeAnimation
 		{
 			Move ();
 		}
-		
+
 		void InitializeFramePositions ()
 		{
-			RectangleF moverRect  = Bounds.Inset(Bounds.Size.Width / 4, Bounds.Size.Height / 4);
-			PointF origin = moverRect.Location;
+			CGRect moverRect  = Bounds.Inset(Bounds.Size.Width / 4, Bounds.Size.Height / 4);
+			CGPoint origin = moverRect.Location;
 			origin.X = 0;
 			moverRect.Location = origin;
 			mover = new NSImageView (moverRect);
-			leftPosition = new PointF (0, moverRect.GetMinY ());
-			rightPosition = new PointF (Bounds.GetMaxX () - moverRect.Width, moverRect.GetMinY ());
+			leftPosition = new CGPoint (0, moverRect.GetMinY ());
+			rightPosition = new CGPoint (Bounds.GetMaxX () - moverRect.Width, moverRect.GetMinY ());
 			isRight = false;
 		}
 		
@@ -57,10 +57,10 @@ namespace CustomizeAnimation
 			mover.Image = NSImage.ImageNamed ("photo.jpg");
 			AddSubview (mover);
 		}
-		
+
 		void Move () 
 		{
-			PointF target = isRight ? leftPosition : rightPosition;
+			CGPoint target = isRight ? leftPosition : rightPosition;
 			((NSView)mover.Animator).SetFrameOrigin(target);
 			isRight = !isRight;
 		}

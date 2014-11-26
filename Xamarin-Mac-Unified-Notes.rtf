@@ -1,6 +1,7 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
+{\colortbl;\red255\green255\blue255;\red164\green8\blue0;\red217\green11\blue0;\red14\green0\blue45;
+\red255\green39\blue18;}
 \margl1440\margr1440\vieww19200\viewh13700\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
@@ -95,6 +96,9 @@
 \i Fixed: Added using statement and changed RectF to CGRect.\
 \
 \
+\cf2 Runtime errors connecting to actions in TestWindow controller.\cf0 \
+\
+\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
 \i0\fs36 \cf0 CAQuartzComposition iOS
@@ -105,7 +109,285 @@ Removed  old \'93MonoMac\'94 namespace qualifier from several types.\
 Change \'93Hello MonoMac\'94 in MyQuartzView.cs to \'93Hello, Xamarin Mac\'94\
 \
 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf3 Got a SIGABRT while executing native code. This usually indicates\
+a fatal error in the mono runtime or one of the native libraries \
+used by your application.\cf0 \
+\
+
+\i0\fs72 CoreAnimationBook
+\i\fs24 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i0\fs36 \cf0 BackgroundFilteredView
+\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 \
+\
+Removed  old \'93MonoMac\'94 namespace qualifier from several types.\
+\
+\
+
+\i0 	BackgroundFilteredView.cs(60,24): error CS0266: Cannot implicitly convert type `CoreGraphics.CGRect' to `System.Drawing.RectangleF'. An explicit conversion exists (are you missing a cast?)\
+\
+	BackgroundFilteredView.cs(61,30): error CS0266: Cannot implicitly convert type `CoreGraphics.CGSize' to `System.Drawing.SizeF'. An explicit conversion exists (are you missing a cast?)\
+\
+	BackgroundFilteredView.cs(62,30): error CS0266: Cannot implicitly convert type `System.nfloat' to `float'. An explicit conversion exists (are you missing a cast?)\
+\
+	BackgroundFilteredView.cs(63,24): error CS0266: Cannot implicitly convert type `CoreGraphics.CGRect' to `System.Drawing.RectangleF'. An explicit conversion exists (are you missing a cast?)\
+
+\i \
+	BackgroundFilteredView.cs(69,28): error CS0266: Cannot implicitly convert type `CoreGraphics.CGPoint' to `System.Drawing.PointF'. An explicit conversion exists (are you missing a cast?)\
+	BackgroundFilteredView.cs(70,29): error CS0266: Cannot implicitly convert type `System.nfloat' to `float'. An explicit conversion exists (are you missing a cast?)\
+\
+\
+Fix: Changed RectangleF to CGRect and PointF to CGPoint.\
 \
 \
 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i0\fs36 \cf0 Custom Animation Timing
+\i\fs24 \
+\
+Removed  old \'93MonoMac\'94 namespace qualifier from several types.\
+\
+	CustomAnimationTiming.cs(40,35): error CS0266: Cannot implicitly convert type `CoreGraphics.CGRect' to `System.Drawing.RectangleF'. An explicit conversion exists (are you missing a cast?)\
+	CustomAnimationTiming.cs(66,32): error CS0266: Cannot implicitly convert type `CoreGraphics.CGPoint' to `System.Drawing.PointF'. An explicit conversion exists (are you missing a cast?)\
+	CustomAnimationTiming.cs(67,28): error CS0266: Cannot implicitly convert type `System.nfloat' to `float'. An explicit conversion exists (are you missing a cast?)\
+\
+Fix: Changed RectangleF to CGRect and PointF to CGPoint.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf2 Runtime errors, beginning with:\
+\
+2014-11-26 13:09:56.625 CustomAnimationTiming[24517:707] *** Assertion failure in -[CustomAnimationTiming initWithFrame:], /SourceCache/AppKit/AppKit-1265.21/AppKit.subproj/NSView.m:1610\
+2014-11-26 13:09:56.627 CustomAnimationTiming[24517:707] An uncaught exception was raised\
+2014-11-26 13:09:56.627 CustomAnimationTiming[24517:707] Frame containing non-finite values \{\{0, 0\}, \{nan, 3.5733110840282835e-43\}\} passed to [CustomAnimationTiming initWithFrame:]\
+\cf0 \
+\cf3 \'85\cf0 \
+\
+\cf3 Got a SIGABRT while executing native code. This usually indicates\
+a fatal error in the mono runtime or one of the native libraries \
+used by your application.\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i0\fs36 \cf0 CustomizeAnimation
+\i\fs24 \cf3 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.\
+\
+	MyView.cs(31,17): error CS1502: The best overloaded method match for `System.Drawing.PointF.PointF(float, float)' has some invalid arguments\
+	MyView.cs(31,36): error CS1503: Argument `#1' cannot convert `System.nfloat' expression to type `float'\
+\
+Fix: Changed PointF to CGPoint.\
+\
+\cf3 Runtime Errors:\
+\
+2014-11-26 13:12:21.824 CustomizeAnimation[24537:707] *** Assertion failure in -[MyView initWithFrame:], /SourceCache/AppKit/AppKit-1265.21/AppKit.subproj/NSView.m:1610\
+2014-11-26 13:12:21.825 CustomizeAnimation[24537:707] An uncaught exception was raised\
+2014-11-26 13:12:21.826 CustomizeAnimation[24537:707] Frame containing non-finite values \{\{0, 0\}, \{nan, 9.1834094859526887e-41\}\} passed to [MyView initWithFrame:]\
+\
+\'85\
+\
+Got a SIGABRT while executing native code. This usually indicates\
+a fatal error in the mono runtime or one of the native libraries \
+used by your application.\
+\
+
+\i0 \cf4 \
+
+\fs36 CustomizeAnimation2
+\fs24 \
+\
+
+\i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \cf4 \
+\
+	BaseView.cs(44,35): error CS0266: Cannot implicitly convert type `CoreGraphics.CGRect' to `System.Drawing.RectangleF'. An explicit conversion exists (are you missing a cast?)\
+	BaseView.cs(49,44): error CS1928: Type `System.Drawing.RectangleF' does not contain a member `GetMinY' and the best extension method overload `CoreGraphics.RectangleFExtensions.GetMinY(this CoreGraphics.CGRect)' has some invalid arguments\
+	BaseView.cs(49,44): error CS1929: Extension method instance type `System.Drawing.RectangleF' cannot be converted to `CoreGraphics.CGRect'\
+	BaseView.cs(50,79): error CS1928: Type `System.Drawing.RectangleF' does not contain a member `GetMinY' and the best extension method overload `CoreGraphics.RectangleFExtensions.GetMinY(this CoreGraphics.CGRect)' has some invalid arguments\
+	BaseView.cs(50,79): error CS1929: Extension method instance type `System.Drawing.RectangleF' cannot be converted to `CoreGraphics.CGRect'\
+	BaseView.cs(50,20): error CS1502: The best overloaded method match for `System.Drawing.PointF.PointF(float, float)' has some invalid arguments\
+	BaseView.cs(50,39): error CS1503: Argument `#1' cannot convert `System.nfloat' expression to type `float'\
+\
+\
+
+\i \cf0 Fix: Changed RectangleF to CGRect and PointF to CGPoint.
+\i0 \cf4 \
+\
+
+\i \cf3 Runtime Errors:\
+
+\i0 \cf4 \
+
+\i \cf3 2014-11-26 13:37:26.684 CustomizeAnimation[24583:707] *** Assertion failure in -[BaseView initWithFrame:], /SourceCache/AppKit/AppKit-1265.21/AppKit.subproj/NSView.m:1610\
+2014-11-26 13:37:26.688 CustomizeAnimation[24583:707] An uncaught exception was raised\
+2014-11-26 13:37:26.689 CustomizeAnimation[24583:707] Frame containing non-finite values \{\{0, 0\}, \{nan, nan\}\} passed to [BaseView initWithFrame:]\
+\
+\'85\
+\
+Got a SIGABRT while executing native code. This usually indicates\
+a fatal error in the mono runtime or one of the native libraries \
+used by your application.
+\i0 \cf4 \
+\
+\
+
+\fs36 FilteredView (repeated within CoreAnimation Book)
+\fs24 \
+\
+
+\i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \cf4 \
+\
+	FilteredView.cs(39,30): error CS0266: Cannot implicitly convert type `CoreGraphics.CGSize' to `System.Drawing.SizeF'. An explicit conversion exists (are you missing a cast?)\
+	FilteredView.cs(40,30): error CS0266: Cannot implicitly convert type `System.nfloat' to `float'. An explicit conversion exists (are you missing a cast?)\
+	FilteredView.cs(41,24): error CS0266: Cannot implicitly convert type `CoreGraphics.CGRect' to `System.Drawing.RectangleF'. An explicit conversion exists (are you missing a cast?)\
+\
+\
+
+\i \cf0 Fix: Changed RectangleF to CGRect and PointF to CGPoint.
+\i0 \cf4 \
+\
+\
+
+\fs36 GroupAnimation
+\fs24  
+\fs36 (repeated within CoreAnimation Book)
+\fs24 \
+\
+
+\i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \cf4 \
+\
+	GroupAnimationView.cs(20,19): error CS0266: Cannot implicitly convert type `System.nfloat' to `float'. An explicit conversion exists (are you missing a cast?)\
+	GroupAnimationView.cs(21,19): error CS0266: Cannot implicitly convert type `System.nfloat' to `float'. An explicit conversion exists (are you missing a cast?)\
+	GroupAnimationView.cs(25,33): error CS0266: Cannot implicitly convert type `CoreGraphics.CGPoint' to `System.Drawing.PointF'. An explicit conversion exists (are you missing a cast?)\
+	GroupAnimationView.cs(26,29): error CS0266: Cannot implicitly convert type `System.nfloat' to `float'. An explicit conversion exists (are you missing a cast?)\
+	GroupAnimationView.cs(27,29): error CS0266: Cannot implicitly convert type `System.nfloat' to `float'. An explicit conversion exists (are you missing a cast?)\
+	GroupAnimationView.cs(35,19): error CS1502: The best overloaded method match for `GroupAnimation.GroupAnimationView.GroupAnimation(System.Drawing.RectangleF)' has some invalid arguments\
+	GroupAnimationView.cs(35,34): error CS1503: Argument `#1' cannot convert `CoreGraphics.CGRect' expression to type `System.Drawing.RectangleF'\
+	GroupAnimationView.cs(68,30): error CS1928: Type `System.Drawing.RectangleF' does not contain a member `Inset' and the best extension method overload `CoreGraphics.RectangleFExtensions.Inset(this CoreGraphics.CGRect, System.nfloat, System.nfloat)' has some invalid arguments\
+	GroupAnimationView.cs(68,30): error CS1929: Extension method instance type `System.Drawing.RectangleF' cannot be converted to `CoreGraphics.CGRect'\
+\
+
+\i \cf0 Fix: Changed RectangleF to CGRect and float to nfloat.
+\i0 \cf4 \
+\
+	GroupAnimationView.cs(70,13): error CS1502: The best overloaded method match for `Foundation.NSValue.FromRectangleF(System.Drawing.RectangleF)' has some invalid arguments\
+	GroupAnimationView.cs(70,29): error CS1503: Argument `#1' cannot convert `CoreGraphics.CGRect' expression to type `System.Drawing.RectangleF'\
+	GroupAnimationView.cs(71,13): error CS1502: The best overloaded method match for `Foundation.NSValue.FromRectangleF(System.Drawing.RectangleF)' has some invalid arguments\
+	GroupAnimationView.cs(71,29): error CS1503: Argument `#1' cannot convert `CoreGraphics.CGRect' expression to type `System.Drawing.RectangleF'\
+\
+
+\i Fix: Changed NSValue.FromRectangleF to NSValue.FromCGRect
+\i0 \
+\
+\
+
+\fs36 KeyFrameMoveAView
+\fs24 \
+\
+
+\i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \cf4 \
+\
+\
+	KeyFrameView.cs(44,24): error CS0115: `KeyFrameMoveAView.KeyFrameView.SetFrameOrigin(System.Drawing.PointF)' is marked as an override but no suitable method found to override\
+	KeyFrameView.cs(91,24): error CS0115: `KeyFrameMoveAView.KeyFrameView.DrawRect(System.Drawing.RectangleF)' is marked as an override but no suitable method found to override\
+\
+\
+	KeyFrameView.cs(24,34): error CS1928: Type `System.Drawing.RectangleF' does not contain a member `Inset' and the best extension method overload `CoreGraphics.RectangleFExtensions.Inset(this CoreGraphics.CGRect, System.nfloat, System.nfloat)' has some invalid arguments\
+	KeyFrameView.cs(24,34): error CS1929: Extension method instance type `System.Drawing.RectangleF' cannot be converted to `CoreGraphics.CGRect'\
+	KeyFrameView.cs(52,28): error CS0266: Cannot implicitly convert type `CoreGraphics.CGRect' to `System.Drawing.RectangleF'. An explicit conversion exists (are you missing a cast?)\
+	KeyFrameView.cs(73,30): error CS0266: Cannot implicitly convert type `CoreGraphics.CGRect' to `System.Drawing.RectangleF'. An explicit conversion exists (are you missing a cast?)\
+	KeyFrameView.cs(75,25): error CS1928: Type `System.Drawing.RectangleF' does not contain a member `GetMinX' and the best extension method overload `CoreGraphics.RectangleFExtensions.GetMinX(this CoreGraphics.CGRect)' has some invalid arguments\
+	KeyFrameView.cs(75,25): error CS1929: Extension method instance type `System.Drawing.RectangleF' cannot be converted to `CoreGraphics.CGRect'\
+	KeyFrameView.cs(76,25): error CS1928: Type `System.Drawing.RectangleF' does not contain a member `GetMinY' and the best extension method overload `CoreGraphics.RectangleFExtensions.GetMinY(this CoreGraphics.CGRect)' has some invalid arguments\
+	KeyFrameView.cs(76,25): error CS1929: Extension method instance type `System.Drawing.RectangleF' cannot be converted to `CoreGraphics.CGRect'\
+\
+\
+
+\i \cf0 Fix: Changed RectangleF to CGRect and PointF to CGPoint.
+\i0 \cf4 \
+\
+\
+
+\fs36 LayeredBackedControls
+\fs24 \
+\
+
+\i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \cf4 \
+\
+MainWindowController.cs(29,36): error CS0266: Cannot implicitly convert type `System.nfloat' to `float'. An explicit conversion exists (are you missing a cast?)\
+\
+
+\i Fixed: Changed float to nfloat.
+\i0 \
+\
+\
+\
+
+\fs36 QCBackground
+\fs24 \
+\
+
+\i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \cf4 \
+\
+	SharedContentView.cs(76,20): error CS0266: Cannot implicitly convert type `System.nfloat' to `float'. An explicit conversion exists (are you missing a cast?)\
+	SharedContentView.cs(77,20): error CS0266: Cannot implicitly convert type `System.nfloat' to `float'. An explicit conversion exists (are you missing a cast?)\
+	SharedContentView.cs(80,46): error CS1503: Argument `#1' cannot convert `System.nfloat' expression to type `float'\
+\
+
+\i Fix: Changed to nfloat.
+\i0 \
+\
+	SharedContentView.cs(79,36): error CS0266: Cannot implicitly convert type `CoreGraphics.CGRect' to `System.Drawing.RectangleF'. An explicit conversion exists (are you missing a cast?)\
+	SharedContentView.cs(80,27): error CS1502: The best overloaded method match for `System.Drawing.PointF.PointF(float, float)' has some invalid arguments\
+\
+
+\i \cf0 Fix: Changed RectangleF to CGRect and PointF to CGPoint.
+\i0 \cf4 \
+\
+\cf5 Multiple runtime errors, beginning:\
+\
+\cf3 2014-11-26 14:59:19.995 QCBackground[24851:707] *** <QCNodeManager | namespace = "com.apple.QuartzComposer" | 414 nodes>: Patch with name "BackdropsQCQuickTimePlayer" is missing\
+2014-11-26 14:59:19.996 QCBackground[24851:707] *** Message from <QCPatch = 0x10863d320 "(null)">:\
+Cannot create node of class "BackdropsQCQuickTimePlayer" and identifier "(null)"\cf4 \
+\
+
+\fs36 \
+TimedAnimation
+\fs24 \
+\
+
+\i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \cf4 \
+\
+\
+	TimedAnimation.cs(27,32): error CS1928: Type `System.Drawing.RectangleF' does not contain a member `Inset' and the best extension method overload `CoreGraphics.RectangleFExtensions.Inset(this CoreGraphics.CGRect, System.nfloat, System.nfloat)' has some invalid arguments\
+	TimedAnimation.cs(27,32): error CS1929: Extension method instance type `System.Drawing.RectangleF' cannot be converted to `CoreGraphics.CGRect'\
+	TimedAnimation.cs(32,22): error CS0266: Cannot implicitly convert type `System.nfloat' to `float'. An explicit conversion exists (are you missing a cast?)\
+	TimedAnimation.cs(41,22): error CS0266: Cannot implicitly convert type `System.nfloat' to `float'. An explicit conversion exists (are you missing a cast?)\
+	TimedAnimation.cs(75,36): error CS0266: Cannot implicitly convert type `CoreGraphics.CGPoint' to `System.Drawing.PointF'. An explicit conversion exists (are you missing a cast?)\
+	TimedAnimation.cs(88,29): error CS1502: The best overloaded method match for `System.Drawing.PointF.PointF(float, float)' has some invalid arguments\
+	TimedAnimation.cs(88,50): error CS1503: Argument `#2' cannot convert `System.nfloat' expression to type `float'\
+	TimedAnimation.cs(89,29): error CS1502: The best overloaded method match for `System.Drawing.PointF.PointF(float, float)' has some invalid arguments\
+	TimedAnimation.cs(89,47): error CS1503: Argument `#1' cannot convert `System.nfloat' expression to type `float'\
+	TimedAnimation.cs(103,30): error CS1502: The best overloaded method match for `System.Drawing.PointF.PointF(float, float)' has some invalid arguments\
+	TimedAnimation.cs(103,47): error CS1503: Argument `#1' cannot convert `System.nfloat' expression to type `float'\
+\
+
+\i \cf0 Fix: Changed RectangleF to CGRect, PointF to CGPoint, and float to nfloat.
+\i0 \cf4 \
 }
