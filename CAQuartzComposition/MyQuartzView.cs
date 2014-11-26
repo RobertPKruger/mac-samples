@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
-using MonoMac.Foundation;
-using MonoMac.AppKit;
-using MonoMac.QuartzComposer;
-using MonoMac.CoreGraphics;
-using MonoMac.CoreImage;
-using MonoMac.CoreAnimation;
+using Foundation;
+using AppKit;
+using QuartzComposer;
+using CoreGraphics;
+using CoreImage;
+using CoreAnimation;
 
 namespace CAQuartzComposition
 {
-	public partial class MyQuartzView : MonoMac.AppKit.NSView
+	public partial class MyQuartzView : AppKit.NSView
 	{
 		QCCompositionLayer cubeLayer;
 		QCCompositionLayer quadLayer;
@@ -78,7 +78,7 @@ namespace CAQuartzComposition
 		private CATextLayer HelloLayer {
 			get {
 				var text = new CATextLayer() {
-					String = "Hello MonoMac",
+					String = "Hello, Xamarin Mac",
 					Frame = Frame
 				};
 				return text;
