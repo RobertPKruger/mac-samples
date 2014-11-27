@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
-using MonoMac.Foundation;
-using MonoMac.AppKit;
-using MonoMac.CoreGraphics;
-using MonoMac.CoreText;
+using Foundation;
+using AppKit;
+using CoreGraphics;
+using CoreText;
 
 namespace CoreTextArcMonoMac
 {
-        public partial class CoreTextArcView : MonoMac.AppKit.NSView
+        public partial class CoreTextArcView : AppKit.NSView
         {
                 NSFont _font;
                 string _string;
@@ -47,9 +47,9 @@ namespace CoreTextArcMonoMac
                         // Examine each run in the line, updating glyphOffset to track how far along the run is 
                         // in terms of glyphCount.
                         long glyphOffset = 0;
-                        float ascent = 0;
-                        float descent = 0;
-                        float leading = 0;
+                        nfloat ascent = 0;
+                        nfloat descent = 0;
+                        nfloat leading = 0;
                         foreach (var run in runArray) {
                                 var runGlyphCount = run.GlyphCount;
                                 
@@ -82,7 +82,7 @@ namespace CoreTextArcMonoMac
                         }
                 }
 
-                public override void DrawRect (RectangleF dirtyRect)
+                public override void DrawRect (CGRect dirtyRect)
                 {
                         // Don't draw if we don't have a font or a title.
                         if (Font == null || Title == string.Empty)
@@ -99,7 +99,7 @@ namespace CoreTextArcMonoMac
                         //CTLineRef line = CTLineCreateWithAttributedString((CFAttributedStringRef)self.attributedString);
                         CTLine line = new CTLine (AttributedString);
                         
-                        int glyphCount = line.GlyphCount;
+                        nint glyphCount = line.GlyphCount;
                         if (glyphCount == 0)
                                 return;
                         
@@ -113,7 +113,7 @@ namespace CoreTextArcMonoMac
                         // Stroke the arc in red for verification.
                         context.BeginPath ();
                         context.AddArc (0, 0, Radius, (float)Math.PI, 0, true);
-                        context.SetRGBStrokeColor (1, 0, 0, 1);
+						context.SetStrokeColor (1, 0, 0, 1);
                         context.StrokePath ();
                         
                         // Rotate the context 90 degrees counterclockwise.
@@ -129,7 +129,7 @@ namespace CoreTextArcMonoMac
                         var runArray = line.GetGlyphRuns ();
                         var runCount = runArray.Count ();
                         
-                        var glyphOffset = 0;
+                        nint glyphOffset = 0;
                         var runIndex = 0;
                         
                         for (; runIndex < runCount; runIndex++) {
@@ -179,7 +179,7 @@ namespace CoreTextArcMonoMac
                                                 
                                                 context.SetFont (cgFont);
                                                 context.SetFontSize (runFont.Size);
-                                                context.SetRGBFillColor (0.25f, 0.25f, 0.25f, 1);
+                                                context.SetFillColor (0.25f, 0.25f, 0.25f, 1);
                                                 context.ShowGlyphsAtPositions (glyph, position, 1);
                                                 
                                         }
@@ -188,24 +188,24 @@ namespace CoreTextArcMonoMac
                                         if (ShowsGlyphBounds) {
                                                 
                                                 var glyphBounds = run.GetImageBounds (context, glyphRange);
-                                                context.SetRGBStrokeColor (0, 0, 1, 1);
+                                                context.SetStrokeColor (0, 0, 1, 1);
                                                 context.StrokeRect (glyphBounds);
                                         }
                                         
                                         // Draw the bounding boxes defined by the line metrics
                                         if (ShowsLineMetrics) {
                                                 
-                                                var lineMetrics = new RectangleF ();
-                                                float ascent = 0;
-                                                float descent = 0;
-                                                float leading = 0;
+                                                var lineMetrics = new CGRect ();
+                                                nfloat ascent = 0;
+                                                nfloat descent = 0;
+                                                nfloat leading = 0;
                                                 
                                                 run.GetTypographicBounds (glyphRange, out ascent, out descent, out leading);
                                                 
                                                 // The glyph is centered around the y-axis
-                                                lineMetrics.Location = new PointF (-(float)halfGlyphWidth, positionForThisGlyph.Y - descent);
-                                                lineMetrics.Size = new SizeF (glyphWidth, ascent + descent);
-                                                context.SetRGBStrokeColor (0, 1, 0, 1);
+                                                lineMetrics.Location = new CGPoint (-(float)halfGlyphWidth, positionForThisGlyph.Y - descent);
+                                                lineMetrics.Size = new CGSize (glyphWidth, ascent + descent);
+                                                context.SetStrokeColor (0, 1, 0, 1);
                                                 context.StrokeRect (lineMetrics);
                                         }
                                         

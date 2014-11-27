@@ -114,18 +114,27 @@ Change \'93Hello MonoMac\'94 in MyQuartzView.cs to \'93Hello, Xamarin Mac\'94\
 a fatal error in the mono runtime or one of the native libraries \
 used by your application.\cf0 \
 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\i0\fs72 CoreAnimationBook
+\i0\fs36 \cf0 CFNetwork
+\i\fs24 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf3 Multiple missing references.\cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i0\fs36 \cf0 CoreAnimationBook
 \i\fs24 \
 \
 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\i0\fs36 \cf0 BackgroundFilteredView
-\fs24 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\i0\b \cf0 BackgroundFilteredView
+\b0 \
 
-\i \cf0 \
+\i \
 \
 Removed  old \'93MonoMac\'94 namespace qualifier from several types.\
 \
@@ -148,10 +157,9 @@ Fix: Changed RectangleF to CGRect and PointF to CGPoint.\
 \
 \
 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\i0\fs36 \cf0 Custom Animation Timing
-\i\fs24 \
+\i0\b CustomAnimationTiming
+\i\b0 \
 \
 Removed  old \'93MonoMac\'94 namespace qualifier from several types.\
 \
@@ -161,7 +169,6 @@ Removed  old \'93MonoMac\'94 namespace qualifier from several types.\
 \
 Fix: Changed RectangleF to CGRect and PointF to CGPoint.\
 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 \cf2 Runtime errors, beginning with:\
 \
 2014-11-26 13:09:56.625 CustomAnimationTiming[24517:707] *** Assertion failure in -[CustomAnimationTiming initWithFrame:], /SourceCache/AppKit/AppKit-1265.21/AppKit.subproj/NSView.m:1610\
@@ -175,12 +182,10 @@ a fatal error in the mono runtime or one of the native libraries \
 used by your application.\
 \
 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\i0\fs36 \cf0 CustomizeAnimation
-\i\fs24 \cf3 \
+\i0\b \cf0 CustomizeAnimation
+\i\b0 \cf3 \
 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.\
 \
 	MyView.cs(31,17): error CS1502: The best overloaded method match for `System.Drawing.PointF.PointF(float, float)' has some invalid arguments\
@@ -203,8 +208,8 @@ used by your application.\
 
 \i0 \cf4 \
 
-\fs36 CustomizeAnimation2
-\fs24 \
+\b CustomizeAnimation2
+\b0 \
 \
 
 \i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
@@ -241,8 +246,8 @@ used by your application.
 \
 \
 
-\fs36 FilteredView (repeated within CoreAnimation Book)
-\fs24 \
+\b FilteredView (repeated within CoreAnimation Book)
+\b0 \
 \
 
 \i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
@@ -259,10 +264,8 @@ used by your application.
 \
 \
 
-\fs36 GroupAnimation
-\fs24  
-\fs36 (repeated within CoreAnimation Book)
-\fs24 \
+\b GroupAnimation (repeated within CoreAnimation Book)
+\b0 \
 \
 
 \i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
@@ -293,8 +296,8 @@ used by your application.
 \
 \
 
-\fs36 KeyFrameMoveAView
-\fs24 \
+\b KeyFrameMoveAView
+\b0 \
 \
 
 \i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
@@ -321,8 +324,8 @@ used by your application.
 \
 \
 
-\fs36 LayeredBackedControls
-\fs24 \
+\b LayeredBackedControls
+\b0 \
 \
 
 \i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
@@ -337,8 +340,8 @@ MainWindowController.cs(29,36): error CS0266: Cannot implicitly convert type `Sy
 \
 \
 
-\fs36 QCBackground
-\fs24 \
+\b QCBackground
+\b0 \
 \
 
 \i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
@@ -367,8 +370,9 @@ Cannot create node of class "BackdropsQCQuickTimePlayer" and identifier "(null)"
 \
 
 \fs36 \
-TimedAnimation
-\fs24 \
+
+\b\fs24 TimedAnimation
+\b0 \
 \
 
 \i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
@@ -390,4 +394,88 @@ TimedAnimation
 
 \i \cf0 Fix: Changed RectangleF to CGRect, PointF to CGPoint, and float to nfloat.
 \i0 \cf4 \
+\
+\
+
+\fs36 CoreTextArcMonoMac
+\fs24 \
+\
+
+\i \cf0 Removed old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \cf4 \
+\
+	MyDocument.cs(18,53): error CS1502: The best overloaded method match for `AppKit.NSDocument.NSDocument(Foundation.NSObjectFlag)' has some invalid arguments\
+\
+\
+\
+	MyDocument.cs(18,58): error CS1503: Argument `#1' cannot convert `Foundation.NSCoder' expression to type `Foundation.NSObjectFlag'\
+\
+\
+	CoreTextArcView.cs(59,102): error CS1502: The best overloaded method match for `CoreText.CTRun.GetTypographicBounds(Foundation.NSRange, out System.nfloat, out System.nfloat, out System.nfloat)' has some invalid arguments\
+	CoreTextArcView.cs(59,160): error CS1503: Argument `#2' cannot convert `out float' expression to type `out System.nfloat'\
+	CoreTextArcView.cs(67,47): error CS1502: The best overloaded method match for `CoreText.CTLine.GetTypographicBounds(out System.nfloat, out System.nfloat, out System.nfloat)' has some invalid arguments\
+	CoreTextArcView.cs(67,73): error CS1503: Argument `#1' cannot convert `out float' expression to type `out System.nfloat'\
+	CoreTextArcView.cs(203,53): error CS1502: The best overloaded method match for `CoreText.CTRun.GetTypographicBounds(Foundation.NSRange, out System.nfloat, out System.nfloat, out System.nfloat)' has some invalid arguments\
+	CoreTextArcView.cs(203,91): error CS1503: Argument `#2' cannot convert `out float' expression to type `out System.nfloat'\
+\
+\
+
+\i Fix: changed float to nfloat.
+\i0 \
+\
+	CoreTextArcView.cs(102,47): error CS0266: Cannot implicitly convert type `System.nint' to `int'. An explicit conversion exists (are you missing a cast?)\
+	CoreTextArcView.cs(215,48): error CS0266: Cannot implicitly convert type `System.nint' to `int'. An explicit conversion exists (are you missing a cast?)\
+\
+
+\i Fix: changed int to nint.
+\i0 \
+\
+	CoreTextArcView.cs(116,33): error CS1061: Type `CoreGraphics.CGContext' does not contain a definition for `SetRGBStrokeColor' and no extension method `SetRGBStrokeColor' of type `CoreGraphics.CGContext' could be found. Are you missing an assembly reference?\
+	CoreTextArcView.cs(182,57): error CS1061: Type `CoreGraphics.CGContext' does not contain a definition for `SetRGBFillColor' and no extension method `SetRGBFillColor' of type `CoreGraphics.CGContext' could be found. Are you missing an assembly reference?\
+	CoreTextArcView.cs(191,57): error CS1061: Type `CoreGraphics.CGContext' does not contain a definition for `SetRGBStrokeColor' and no extension method `SetRGBStrokeColor' of type `CoreGraphics.CGContext' could be found. Are you missing an assembly reference?\
+	CoreTextArcView.cs(208,57): error CS1061: Type `CoreGraphics.CGContext' does not contain a definition for `SetRGBStrokeColor' and no extension method `SetRGBStrokeColor' of type `CoreGraphics.CGContext' could be found. Are you missing an assembly reference?\
+\
+\
+
+\i Fix: Removed \'93RGB\'94 from method name.
+\i0 \
+\
+\
+\
+	CoreTextArcView.cs(206,72): error CS1502: The best overloaded method match for `System.Drawing.PointF.PointF(float, float)' has some invalid arguments\
+	CoreTextArcView.cs(206,129): error CS1503: Argument `#2' cannot convert `System.nfloat' expression to type `float'\
+	CoreTextArcView.cs(207,68): error CS1502: The best overloaded method match for `System.Drawing.SizeF.SizeF(float, float)' has some invalid arguments\
+	CoreTextArcView.cs(207,91): error CS1503: Argument `#2' cannot convert `System.nfloat' expression to type `float'\
+	CoreTextArcView.cs(215,48): error CS0266: Cannot implicitly convert type `System.nint' to `int'. An explicit conversion exists (are you missing a cast?)\
+\
+\
+\
+\cf5 Multiple runtime errors, beginning:\
+\cf4 \
+\cf3 2014-11-26 18:01:31.627 CoreTextArcMonoMac[25265:707] *** Assertion failure in -[CoreTextArcView initWithFrame:], /SourceCache/AppKit/AppKit-1265.21/AppKit.subproj/NSView.m:1610\
+2014-11-26 18:01:31.764 CoreTextArcMonoMac[25265:707] An uncaught exception was raised\
+2014-11-26 18:01:31.765 CoreTextArcMonoMac[25265:707] Frame containing non-finite values \{\{0, 0\}, \{nan, nan\}\} passed to [CoreTextArcView initWithFrame:]\cf5 \
+\
+\
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\fs36 \cf0 CoreWLANWirelessManager
+\fs24 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \
+\
+	NetworksDataSource.cs(19,23): error CS0508: `CoreWLANWirelessManager.NetworksDataSource.GetRowCount(AppKit.NSTableView)': return type must be `System.nint' to match overridden member `AppKit.NSTableViewDataSource.GetRowCount(AppKit.NSTableView)'\
+	NetworksDataSource.cs(24,28): error CS0115: `CoreWLANWirelessManager.NetworksDataSource.GetObjectValue(AppKit.NSTableView, AppKit.NSTableColumn, int)' is marked as an override but no suitable method found to override\
+\
+Fix: changed int to nint in return values.\
+\
+\
+\
+\
+\
+\
 }
