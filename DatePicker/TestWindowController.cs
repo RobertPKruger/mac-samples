@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
-using MonoMac.Foundation;
-using MonoMac.AppKit;
+using Foundation;
+using AppKit;
+using CoreGraphics;
 
 namespace DatePicker
 {
-        public partial class TestWindowController : MonoMac.AppKit.NSWindowController
+        public partial class TestWindowController : AppKit.NSWindowController
         {
 
                 // control we will add by code.
@@ -160,7 +161,7 @@ namespace DatePicker
                         // datePickerControl.Cell.WeakDelegate = this;
                         
                         // we want to respond to date/time changes
-                        datePickerControl.Action = new MonoMac.ObjCRuntime.Selector ("datePickerAction:");
+                        datePickerControl.Action = new ObjCRuntime.Selector ("datePickerAction:");
                         
                 }
 
@@ -250,21 +251,21 @@ formatter.DateStyle = NSDateFormatterStyle.Short;
                 /// </param>
                 partial void setPickerStyle (NSPopUpButton sender)
                 {
-                        int tag = sender.SelectedCell.Tag;
+                        nint tag = sender.SelectedCell.Tag;
                         
-                        if (datePickerControl.DatePickerStyle != (NSDatePickerStyle)tag) {
-                                RectangleF windowFrame = this.Window.Frame;
-                                RectangleF boxFrame = outerBox.Frame;
+			if (datePickerControl.DatePickerStyle != (NSDatePickerStyle)(int)tag) {
+                                CGRect windowFrame = this.Window.Frame;
+								CGRect boxFrame = outerBox.Frame;
                                 
                                 datePickerControl.Hidden = true;
                                 
-                                if ((NSDatePickerStyle)tag == NSDatePickerStyle.ClockAndCalendar) {
+				if ((NSDatePickerStyle)(int)tag == NSDatePickerStyle.ClockAndCalendar) {
                                         
                                         // for this picker style, we need to grow the window to make room for it.
-                                        SizeF size = windowFrame.Size;
+                                        CGSize size = windowFrame.Size;
                                         size.Height += shrinkGrowFacter;
                                         windowFrame.Size = size;
-                                        PointF origin = windowFrame.Location;
+                                        CGPoint origin = windowFrame.Location;
                                         origin.Y -= shrinkGrowFacter;
                                         windowFrame.Location = origin;
                                         
@@ -293,10 +294,10 @@ formatter.DateStyle = NSDateFormatterStyle.Short;
                                                 dateResult3.Hidden = true;
                                                 dateResult4.Hidden = true;
                                                 
-                                                SizeF size = windowFrame.Size;
+                                                CGSize size = windowFrame.Size;
                                                 size.Height -= shrinkGrowFacter;
                                                 windowFrame.Size = size;
-                                                PointF origin = windowFrame.Location;
+                                                CGPoint origin = windowFrame.Location;
                                                 origin.Y += shrinkGrowFacter;
                                                 windowFrame.Location = origin;
                                                 
@@ -309,7 +310,7 @@ formatter.DateStyle = NSDateFormatterStyle.Short;
                                         }
                                         
                                         // set our desired picker style
-                                        setupDatePickerControl ((NSDatePickerStyle)tag);
+					setupDatePickerControl ((NSDatePickerStyle)(int)tag);
                                         
                                 }
                                 
@@ -329,9 +330,9 @@ formatter.DateStyle = NSDateFormatterStyle.Short;
                 /// </param>
                 partial void setFontSize (NSPopUpButton sender)
                 {
-                        int tag = sender.SelectedCell.Tag;
+			int tag = (int)sender.SelectedCell.Tag;
                         
-                        switch ((NSControlSize)tag) {
+			switch ((NSControlSize)tag) {
                         case NSControlSize.Mini:
                                 datePickerControl.Cell.ControlSize = NSControlSize.Mini;
                                 datePickerControl.Cell.Font = NSFont.SystemFontOfSize (9.0f);
@@ -437,7 +438,7 @@ formatter.DateStyle = NSDateFormatterStyle.Short;
 				/// </param>
 				partial void setBorderStyle(NSMatrix sender)
 				{
-						switch ((DatePickerBorderStyle)sender.SelectedCell.Tag) {
+			switch ((DatePickerBorderStyle)(int)sender.SelectedCell.Tag) {
 						case DatePickerBorderStyle.Bezeled:
 									datePickerControl.Bezeled = true;
 									break;
@@ -487,7 +488,7 @@ formatter.DateStyle = NSDateFormatterStyle.Short;
                         
                         bool checkedState = sender.SelectedCell.State == NSCellStateValue.On;
                         
-                        switch ((DateElementSelections)sender.SelectedCell.Tag) {
+						switch ((DateElementSelections)(int)sender.SelectedCell.Tag) {
                         
                         case DateElementSelections.YearMonth:
                                 if (checkedState)
@@ -526,7 +527,7 @@ formatter.DateStyle = NSDateFormatterStyle.Short;
                         
                         bool checkedState = sender.SelectedCell.State == NSCellStateValue.On;
                         
-                        switch ((TimeElementSelections)sender.SelectedCell.Tag) {
+			switch ((TimeElementSelections)(int)sender.SelectedCell.Tag) {
                         
                         case TimeElementSelections.HourMinute:
                                 if (checkedState)
@@ -590,7 +591,7 @@ formatter.DateStyle = NSDateFormatterStyle.Short;
                 /// </param>
                 partial void setDatePickerMode (NSMatrix sender)
                 {
-                        switch ((DatePickerModeSelections)sender.SelectedCell.Tag) {
+			switch ((DatePickerModeSelections)(int)sender.SelectedCell.Tag) {
                         case DatePickerModeSelections.SingleDateMode:
                                 datePickerControl.DatePickerMode = NSDatePickerMode.Single;
                                 break;

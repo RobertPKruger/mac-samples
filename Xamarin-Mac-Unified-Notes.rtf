@@ -474,8 +474,45 @@ Cannot create node of class "BackdropsQCQuickTimePlayer" and identifier "(null)"
 Fix: changed int to nint in return values.\
 \
 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\fs36 \cf0 DatePicker
+\fs24 \
 \
 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \
 \
 \
+	TestWindowController.cs(253,55): error CS0266: Cannot implicitly convert type `System.nint' to `int'. An explicit conversion exists (are you missing a cast?)\
+	TestWindowController.cs(256,70): error CS0266: Cannot implicitly convert type `CoreGraphics.CGRect' to `System.Drawing.RectangleF'. An explicit conversion exists (are you missing a cast?)\
+	TestWindowController.cs(257,64): error CS0266: Cannot implicitly convert type `CoreGraphics.CGRect' to `System.Drawing.RectangleF'. An explicit conversion exists (are you missing a cast?)\
+	TestWindowController.cs(332,55): error CS0266: Cannot implicitly convert type `System.nint' to `int'. An explicit conversion exists (are you missing a cast?)\
+	TestWindowController.cs(440,58): error CS0030: Cannot convert type `System.nint' to `DatePicker.TestWindowController.DatePickerBorderStyle'\
+	TestWindowController.cs(490,76): error CS0030: Cannot convert type `System.nint' to `DatePicker.TestWindowController.DateElementSelections'\
+	TestWindowController.cs(529,76): error CS0030: Cannot convert type `System.nint' to `DatePicker.TestWindowController.TimeElementSelections'\
+	TestWindowController.cs(593,79): error CS0030: Cannot convert type `System.nint' to `DatePicker.TestWindowController.DatePickerModeSelections'\
+\
+\
+	TestWindowController.cs(256,85): error CS0030: Cannot convert type `System.nint' to `AppKit.NSDatePickerStyle'\
+	TestWindowController.cs(262,56): error CS0030: Cannot convert type `System.nint' to `AppKit.NSDatePickerStyle'\
+	TestWindowController.cs(265,66): error CS0266: Cannot implicitly convert type `CoreGraphics.CGSize' to `System.Drawing.SizeF'. An explicit conversion exists (are you missing a cast?)\
+	TestWindowController.cs(268,69): error CS0266: Cannot implicitly convert type `CoreGraphics.CGPoint' to `System.Drawing.PointF'. An explicit conversion exists (are you missing a cast?)\
+	TestWindowController.cs(272,57): error CS0266: Cannot implicitly convert type `CoreGraphics.CGSize' to `System.Drawing.SizeF'. An explicit conversion exists (are you missing a cast?)\
+	TestWindowController.cs(297,74): error CS0266: Cannot implicitly convert type `CoreGraphics.CGSize' to `System.Drawing.SizeF'. An explicit conversion exists (are you missing a cast?)\
+	TestWindowController.cs(300,77): error CS0266: Cannot implicitly convert type `CoreGraphics.CGPoint' to `System.Drawing.PointF'. An explicit conversion exists (are you missing a cast?)\
+	TestWindowController.cs(304,65): error CS0266: Cannot implicitly convert type `CoreGraphics.CGSize' to `System.Drawing.SizeF'. An explicit conversion exists (are you missing a cast?)\
+	TestWindowController.cs(313,84): error CS0030: Cannot convert type `System.nint' to `AppKit.NSDatePickerStyle'\
+	TestWindowController.cs(333,55): error CS0266: Cannot implicitly convert type `System.nint' to `int'. An explicit conversion exists (are you missing a cast?)\
+	TestWindowController.cs(441,58): error CS0030: Cannot convert type `System.nint' to `DatePicker.TestWindowController.DatePickerBorderStyle'\
+	TestWindowController.cs(491,76): error CS0030: Cannot convert type `System.nint' to `DatePicker.TestWindowController.DateElementSelections'\
+	TestWindowController.cs(530,76): error CS0030: Cannot convert type `System.nint' to `DatePicker.TestWindowController.TimeElementSelections'\
+	TestWindowController.cs(594,79): error CS0030: Cannot convert type `System.nint' to `DatePicker.TestWindowController.DatePickerModeSelections'\
+\
+\
+Fix: 
+\i Fix: Changed RectangleF to CGRect, PointF to CGPoint, and int to mint. To convert enums, left local ints alone and/or cast nints from property values to int.
+\i0 \
 }
