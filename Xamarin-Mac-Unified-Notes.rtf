@@ -1,7 +1,8 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
 {\colortbl;\red255\green255\blue255;\red164\green8\blue0;\red217\green11\blue0;\red14\green0\blue45;
-\red255\green39\blue18;}
+\red255\green39\blue18;\red51\green100\blue164;\red51\green51\blue51;\red245\green125\blue0;\red0\green150\blue149;
+}
 \margl1440\margr1440\vieww19200\viewh13700\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
@@ -515,4 +516,31 @@ Fix: changed int to nint in return values.\
 Fix: 
 \i Fix: Changed RectangleF to CGRect, PointF to CGPoint, and int to mint. To convert enums, left local ints alone and/or cast nints from property values to int.
 \i0 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\fs36 \cf0 DocAppIcon
+\fs24 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \
+\
+	MainWindowController.cs(38,41): error CS1593: Delegate `System.Action<Foundation.NSTimer>' does not take `0' arguments\
+\
+Fix: Changed \
+\
+\pard\pardeftab720
+
+\f1 \cf6 NSTimer\cf7 .CreateScheduledTimer (\cf8 3.0\cf7 , () => \cf6 NSApplication\cf7 .SharedApplication.RequestUserAttention (type));\uc0\u8232 
+\f0 \cf0 \
+TO\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\pard\pardeftab720
+
+\f1 \cf6 NSTimer\cf7 .CreateScheduledTimer (\cf8 3.0\cf7 , \cf9 new\cf7  \cf6 Action\cf7 <\cf6 NSTimer\cf7 >((x) => \cf6 NSApplication\cf7 .SharedApplication.RequestUserAttention (type)));\uc0\u8232 
+\f0 \cf0 \
 }
