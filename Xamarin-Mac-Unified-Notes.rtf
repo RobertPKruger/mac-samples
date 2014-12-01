@@ -705,7 +705,9 @@ Fix: changed to NSView.GlobalFrameChangedNotification.\
 \f0 \cf0 \
 \cf3 \'85\
 \
-Sigabrt error.\cf0 \
+Got a SIGABRT while executing native code. This usually indicates\
+a fatal error in the mono runtime or one of the native libraries \
+used by your application.\cf0 \
 \
 
 \fs36 GlossyClock
@@ -737,4 +739,52 @@ Runtime note:\
 \cf3 2014-11-30 20:44:13.839 GlossyClock[30339:707] CoreText performance note: Client called CTFontCreateWithName() using name "Menlo" and got font with PostScript name "Menlo-Regular". For best performance, only use PostScript names when calling this API.\cf0 \
 \
 Changed string in Clockview.cs line 91 to \'93Menlo-Regular\'94\
+\
+\
+\
+
+\fs36 GLSLShader
+\fs24 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 Removed old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \
+\
+MyOpenGLView.cs(82,24): error CS0115: `GLSLShader.MyOpenGLView.DrawRect(System.Drawing.RectangleF)' is marked as an override but no suitable method found to override\
+\
+	MainWindowController.cs(64,42): error CS0266: Cannot implicitly convert type `CoreGraphics.CGRect' to `System.Drawing.RectangleF'. An explicit conversion exists (are you missing a cast?)\
+\
+	MyOpenGLView.cs(209,21): error CS1502: The best overloaded method match for `GLSLShader.Scene.ResizeGLScene(System.Drawing.RectangleF)' has some invalid arguments\
+	MyOpenGLView.cs(209,36): error CS1503: Argument `#1' cannot convert `CoreGraphics.CGRect' expression to type `System.Drawing.RectangleF'\
+\
+
+\i Fix: c
+\i0 \
+\
+	MyOpenGLView.cs(80,79): error CS0117: `AppKit.NSView' does not contain a definition for `NSViewGlobalFrameDidChangeNotification'\
+\
+\pard\pardeftab720
+
+\i \cf0 Fix: changed to NSView.GlobalFrameChangedNotification.
+\i0 \
+\
+\cf3 Runtime Errors, beginning with:\
+\
+2014-11-30 21:20:51.506 GLSLShader[30455:707] *** Assertion failure in -[MyOpenGLView initWithFrame:], /SourceCache/AppKit/AppKit-1265.21/AppKit.subproj/NSView.m:1610\
+2014-11-30 21:20:51.507 GLSLShader[30455:707] An uncaught exception was raised\
+2014-11-30 21:20:51.507 GLSLShader[30455:707] Frame containing non-finite values \{\{0, 0\}, \{nan, nan\}\} passed to [MyOpenGLView initWithFrame:]\
+\
+\'85\
+\
+Got a SIGABRT while executing native code. This usually indicates\
+a fatal error in the mono runtime or one of the native libraries \
+used by your application.\cf0 \
+\
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\
 }
