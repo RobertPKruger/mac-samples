@@ -406,11 +406,11 @@ Cannot create node of class "BackdropsQCQuickTimePlayer" and identifier "(null)"
 \i0 \cf4 \
 \
 	MyDocument.cs(18,53): error CS1502: The best overloaded method match for `AppKit.NSDocument.NSDocument(Foundation.NSObjectFlag)' has some invalid arguments\
-\
-\
-\
 	MyDocument.cs(18,58): error CS1503: Argument `#1' cannot convert `Foundation.NSCoder' expression to type `Foundation.NSObjectFlag'\
 \
+
+\i Fix: commented out constructor that takes NSObjectFlag.
+\i0 \
 \
 	CoreTextArcView.cs(59,102): error CS1502: The best overloaded method match for `CoreText.CTRun.GetTypographicBounds(Foundation.NSRange, out System.nfloat, out System.nfloat, out System.nfloat)' has some invalid arguments\
 	CoreTextArcView.cs(59,160): error CS1503: Argument `#2' cannot convert `out float' expression to type `out System.nfloat'\
@@ -530,17 +530,44 @@ Fix:
 \
 	MainWindowController.cs(38,41): error CS1593: Delegate `System.Action<Foundation.NSTimer>' does not take `0' arguments\
 \
-Fix: Changed \
+Fix: This:\
 \
 \pard\pardeftab720
 
 \f1 \cf6 NSTimer\cf7 .CreateScheduledTimer (\cf8 3.0\cf7 , () => \cf6 NSApplication\cf7 .SharedApplication.RequestUserAttention (type));\uc0\u8232 
 \f0 \cf0 \
-TO\
+Changed to this:\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 \cf0 \
 \pard\pardeftab720
 
 \f1 \cf6 NSTimer\cf7 .CreateScheduledTimer (\cf8 3.0\cf7 , \cf9 new\cf7  \cf6 Action\cf7 <\cf6 NSTimer\cf7 >((x) => \cf6 NSApplication\cf7 .SharedApplication.RequestUserAttention (type)));\uc0\u8232 
 \f0 \cf0 \
+\
+\
+
+\fs36 DocumentSample
+\fs24 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \
+\pard\pardeftab720
+\cf0 \
+	MyDocument.cs(20,39): error CS1502: The best overloaded method match for `AppKit.NSDocument.NSDocument(Foundation.NSObjectFlag)' has some invalid arguments\
+	MyDocument.cs(20,44): error CS1503: Argument `#1' cannot convert `Foundation.NSCoder' expression to type `Foundation.NSObjectFlag'\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf3 Fix: commented out constructor that takes NSObjectFlag. That breaks MyDocument apparently, but at least it compiles. See CoreTextArcMonoMac.
+\i0 \cf0 \
+\pard\pardeftab720
+\cf0 \
+\
+\
+\
+\
+\
 }
