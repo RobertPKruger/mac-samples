@@ -783,8 +783,61 @@ used by your application.\cf0 \
 \
 \
 \
+
+\fs36 HeartRateMonitor
+\fs24 \
 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 Removed old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \
+\pard\pardeftab720
 \cf0 \
+	HeartRateMonitorTableDataSource.cs(44,28): error CS0115: `Xamarin.HeartMonitor.HeartRateMonitorTableDataSource.GetObjectValue(AppKit.NSTableView, AppKit.NSTableColumn, int)' is marked as an override but no suitable method found to override\
+	HeartRateMonitorTableDataSource.cs(50,23): error CS0508: `Xamarin.HeartMonitor.HeartRateMonitorTableDataSource.GetRowCount(AppKit.NSTableView)': return type must be `System.nint' to match overridden member `AppKit.NSTableViewDataSource.GetRowCount(AppKit.NSTableView)'\
 \
-}
+	MainWindowController.cs(80,36): error CS1502: The best overloaded method match for `Xamarin.HeartMonitor.HeartRateMonitorTableDataSource.GetHeartRateMonitor(int)' has some invalid arguments\
+	MainWindowController.cs(80,73): error CS1503: Argument `#1' cannot convert `System.nint' expression to type `int'\
+	MainWindowController.cs(113,32): error CS1502: The best overloaded method match for `System.Drawing.PointF.PointF(float, float)' has some invalid arguments\
+	MainWindowController.cs(114,33): error CS1503: Argument `#1' cannot convert `System.nfloat' expression to type `float'\
+\
+\
+	HeartRateMonitor.cs(186,24): error CS0123: A method or delegate `Xamarin.HeartMonitor.HeartRateMonitor.ScheduleBeatTimer()' parameters do not match delegate `System.Action<Foundation.NSTimer>(Foundation.NSTimer)' parameters\
+\
+	HeartRateMonitorTableDataSource.cs(46,39): error CS1502: The best overloaded method match for `System.Collections.Generic.List<Xamarin.HeartMonitor.HeartRateMonitor>.this[int]' has some invalid arguments\
+\
+	HeartRateMonitorTableDataSource.cs(46,40): error CS1503: Argument `#1' cannot convert `System.nint' expression to type `int'\
+\
+
+\i Fix: changed int to nint, and RectangleF to CGRect.
+\i0 \
+\
+\
+Changed this:\
+\
+
+\f1 \cf7 beatTimer = \cf6 NSTimer\cf7 .CreateScheduledTimer (\cf8 60\cf7  / (\cf9 double\cf7 )CurrentHeartBeat.Rate, ScheduleBeatTimer);\uc0\u8232 
+\f0 \cf0 \
+\
+To this:\
+\
+
+\f1 \cf7 beatTimer = \cf6 NSTimer\cf7 .CreateScheduledTimer (\cf8 60\cf7  / (\cf9 double\cf7 )CurrentHeartBeat.Rate, \cf9 new\cf7  \cf6 Action\cf7 <\cf6 NSTimer\cf7 >((x)=>ScheduleBeatTimer()));\uc0\u8232 
+\f0 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\pard\pardeftab720
+\cf0 HeartRateMonitor.cs(103,5): error CS0117: `CoreBluetooth.PeripheralConnectionOptions' does not contain a definition for `NotifyOnDisconnectionKey'\
+\
+
+\i Fix: Changed to NotifyOnDisconnection\
+\
+BundleIdentifier not set.
+\i0 \
+\
+
+\i Fix: Added \'93com.xamarin.heartratemonitor\'94 to info.plist.\
+\
+\
+
+\i0 \cf3 2014-11-30 21:45:54.683 HeartRateMonitor[30566:707] CoreBluetooth[WARNING] <CBCentralManager: 0x60000024d800> is not powered on}
