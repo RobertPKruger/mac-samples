@@ -567,6 +567,43 @@ Changed to this:\
 \cf0 \
 \
 \
+
+\fs36 DrawerMadness
+\fs24 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \
+\pard\pardeftab720
+\cf0 \
+\
+MyDrawerDelegate.cs(53,25): error CS0115: `DrawerMadness.MyDrawerDelegate.DrawerWillResizeContents(AppKit.NSDrawer, System.Drawing.SizeF)' is marked as an override but no suitable method found to override\
+\
+\
+
+\i Fix: Changed SizeF to CGSize in parameters and return.
+\i0 \
+\
+	ParentWindowController.cs(149,55): error CS0266: Cannot implicitly convert type `CoreGraphics.CGSize' to `System.Drawing.SizeF'. An explicit conversion exists (are you missing a cast?)\
+	ParentWindowController.cs(153,30): error CS0266: Cannot implicitly convert type `System.nfloat' to `float'. An explicit conversion exists (are you missing a cast?)\
+	ParentWindowController.cs(209,48): error CS0123: A method or delegate `DrawerMadness.ParentWindowController.DrawerWillResizeContents(AppKit.NSDrawer, System.Drawing.SizeF)' parameters do not match delegate `AppKit.DrawerWillResizeContentsDelegate(AppKit.NSDrawer, CoreGraphics.CGSize)' parameters\
+	ParentWindowController.cs(234,43): error CS0266: Cannot implicitly convert type `CoreGraphics.CGSize' to `System.Drawing.SizeF'. An explicit conversion exists (are you missing a cast?)\
+	ParentWindowController.cs(254,36): error CS1502: The best overloaded method match for `System.Drawing.SizeF.SizeF(float, float)' has some invalid arguments\
+	ParentWindowController.cs(255,40): error CS1503: Argument `#2' cannot convert `System.nfloat' expression to type `float'\
+	ParentWindowController.cs(257,36): error CS1502: The best overloaded method match for `System.Drawing.SizeF.SizeF(float, float)' has some invalid arguments\
+	ParentWindowController.cs(258,40): error CS1503: Argument `#2' cannot convert `System.nfloat' expression to type `float'\
+	MyDrawerDelegate.cs(63,47): error CS1502: The best overloaded method match for `System.Drawing.SizeF.SizeF(float, float)' has some invalid arguments\
+	MyDrawerDelegate.cs(63,57): error CS1503: Argument `#1' cannot convert `System.nfloat' expression to type `float'\
+	MyDrawerDelegate.cs(67,47): error CS1502: The best overloaded method match for `System.Drawing.SizeF.SizeF(float, float)' has some invalid arguments\
+	MyDrawerDelegate.cs(67,57): error CS1503: Argument `#1' cannot convert `System.nfloat' expression to type `float'\
+\
+\
+Fixes: Changed SizeF to CGSize. Changed float to nfloat.\
+\
+\
+\
+\
 \
 \
 \
