@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
 
-using MonoMac.Foundation;
-using MonoMac.AppKit;
-using MonoMac.CoreVideo;
-using MonoMac.OpenGL;
+using Foundation;
+using AppKit;
+using CoreVideo;
+using OpenGL;
+using CoreGraphics;
 
 namespace GLFullScreen
 {
-	public partial class MyOpenGLView : MonoMac.AppKit.NSView
+	public partial class MyOpenGLView : AppKit.NSView
 	{
 		NSOpenGLContext openGLContext;
 		NSOpenGLPixelFormat pixelFormat;
@@ -26,7 +27,7 @@ namespace GLFullScreen
 		{
 		}
 
-		public MyOpenGLView (RectangleF frame, NSOpenGLContext context) : base(frame)
+		public MyOpenGLView (CGRect frame, NSOpenGLContext context) : base(frame)
 		{
 			var attribs = new object [] {
 				NSOpenGLPixelFormatAttribute.Accelerated,
@@ -52,10 +53,11 @@ namespace GLFullScreen
 			
 			// Look for changes in view size
 			// Note, -reshape will not be called automatically on size changes because NSView does not export it to override 
-			notificationProxy = NSNotificationCenter.DefaultCenter.AddObserver (NSView.NSViewGlobalFrameDidChangeNotification, HandleReshape);
+			notificationProxy = NSNotificationCenter.DefaultCenter.AddObserver(NSView.GlobalFrameChangedNotification, HandleReshape);
+
 		}
 
-		public override void DrawRect (RectangleF dirtyRect)
+		public override void DrawRect (CGRect dirtyRect)
 		{
 			// Ignore if the display link is still running
 			if (!displayLink.IsRunning && controller != null)

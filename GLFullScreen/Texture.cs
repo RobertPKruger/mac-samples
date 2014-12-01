@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
 
-using MonoMac.Foundation;
-using MonoMac.AppKit;
-using MonoMac.CoreGraphics;
-using MonoMac.OpenGL;
+using Foundation;
+using AppKit;
+using CoreGraphics;
+using OpenGL;
 
 namespace GLFullScreen
 {
@@ -31,7 +31,7 @@ namespace GLFullScreen
 
                 void GetImagaDataFromPath (string path)
                 {
-                        int width, height;
+                        nint width, height;
                         NSImage src;
                         CGImage image;
                         CGContext context = null;
@@ -39,7 +39,7 @@ namespace GLFullScreen
                         data = new byte[TEXTURE_WIDTH * TEXTURE_HEIGHT * 4];
                         
                         src = new NSImage (path);
-						var rect = RectangleF.Empty;
+						var rect = CGRect.Empty;
 
                         image = src.AsCGImage (ref rect, null, null);
                         width = image.Width;
@@ -47,7 +47,7 @@ namespace GLFullScreen
                         
                         CGImageAlphaInfo ai = CGImageAlphaInfo.PremultipliedLast;
                         
-                        context = new CGBitmapContext (data, width, height, 8, 4 * width, image.ColorSpace, ai);
+			context = new CGBitmapContext (data, (int)width, (int)height, 8, 4 * (int)width, image.ColorSpace, ai);
                         
                         // Core Graphics referential is upside-down compared to OpenGL referential
                         // Flip the Core Graphics context here

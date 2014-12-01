@@ -653,4 +653,65 @@ BundleIdentifier not set.\
 
 \i Fix: Added \'93com.xamarin.fseventwatcher\'94 to info.plist.
 \i0 \
+\
+\
+
+\fs36 GLFullScreen
+\fs24 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 Removed old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \
+\pard\pardeftab720
+\cf0 \
+	MyOpenGLView.cs(58,24): error CS0115: `GLFullScreen.MyOpenGLView.DrawRect(System.Drawing.RectangleF)' is marked as an override but no suitable method found to override\
+\
+	MainWindowController.cs(55,42): error CS0266: Cannot implicitly convert type `CoreGraphics.CGRect' to `System.Drawing.RectangleF'. An explicit conversion exists (are you missing a cast?)\
+	MainWindowController.cs(189,38): error CS0266: Cannot implicitly convert type `CoreGraphics.CGPoint' to `System.Drawing.PointF'. An explicit conversion exists (are you missing a cast?)\
+	MainWindowController.cs(199,28): error CS0266: Cannot implicitly convert type `CoreGraphics.CGPoint' to `System.Drawing.PointF'. An explicit conversion exists (are you missing a cast?)\
+	MyOpenGLView.cs(56,79): error CS0117: `AppKit.NSView' does not contain a definition for `NSViewGlobalFrameDidChangeNotification'\
+	MyOpenGLView.cs(168,21): error CS1502: The best overloaded method match for `GLFullScreen.Scene.setViewportRect(System.Drawing.RectangleF)' has some invalid arguments\
+	MyOpenGLView.cs(168,38): error CS1503: Argument `#1' cannot convert `CoreGraphics.CGRect' expression to type `System.Drawing.RectangleF'\
+	Texture.cs(44,37): error CS1502: The best overloaded method match for `AppKit.NSImage.AsCGImage(ref CoreGraphics.CGRect, AppKit.NSGraphicsContext, Foundation.NSDictionary)' has some invalid arguments\
+	Texture.cs(44,52): error CS1503: Argument `#1' cannot convert `ref System.Drawing.RectangleF' expression to type `ref CoreGraphics.CGRect'\
+	Texture.cs(45,39): error CS0266: Cannot implicitly convert type `System.nint' to `int'. An explicit conversion exists (are you missing a cast?)\
+	Texture.cs(46,40): error CS0266: Cannot implicitly convert type `System.nint' to `int'. An explicit conversion exists (are you missing a cast?)\
+\
+	MainWindowController.cs(190,38): error CS0266: Cannot implicitly convert type `CoreGraphics.CGPoint' to `System.Drawing.PointF'. An explicit conversion exists (are you missing a cast?)\
+	MainWindowController.cs(200,28): error CS0266: Cannot implicitly convert type `CoreGraphics.CGPoint' to `System.Drawing.PointF'. An explicit conversion exists (are you missing a cast?)\
+\
+	Texture.cs(44,37): error CS1502: The best overloaded method match for `AppKit.NSImage.AsCGImage(ref CoreGraphics.CGRect, AppKit.NSGraphicsContext, Foundation.NSDictionary)' has some invalid arguments\
+\
+	Texture.cs(44,52): error CS1503: Argument `#1' cannot convert `ref System.Drawing.RectangleF' expression to type `ref CoreGraphics.CGRect'\
+	Texture.cs(45,39): error CS0266: Cannot implicitly convert type `System.nint' to `int'. An explicit conversion exists (are you missing a cast?)\
+	Texture.cs(46,40): error CS0266: Cannot implicitly convert type `System.nint' to `int'. An explicit conversion exists (are you missing a cast?)\
+\
+\
+Fix: changed RectangleF to CGRect, PointF to CGPoint, float to nfloat, int to nint. Cast a few nints to ints in function call to CGBitmapContext.\
+\
+\
+	MyOpenGLView.cs(56,79): error CS0117: `AppKit.NSView' does not contain a definition for `NSViewGlobalFrameDidChangeNotification'\
+\
+Fix: changed to NSView.GlobalFrameChangedNotification.\
+\
+
+\f1 \cf3 Runtime warning, starting with:\
+\
+2014-11-30 18:53:32.854 GLFullScreen[30217:707] *** Assertion failure in -[MyOpenGLView initWithFrame:], /SourceCache/AppKit/AppKit-1265.21/AppKit.subproj/NSView.m:1610\
+2014-11-30 18:53:33.779 GLFullScreen[30217:707] An uncaught exception was raised\
+2014-11-30 18:53:33.789 GLFullScreen[30217:707] Frame containing non-finite values \{\{0, 0\}, \{nan, nan\}\} passed to [MyOpenGLView initWithFrame:]\cf7 \
+
+\f0 \cf0 \
+\cf3 \'85\
+\
+Sigabrt error.\cf0 \
+\
+
+\f1 \cf7 \
+\
+\uc0\u8232 
+\f0 \cf0 \
+\
+\
 }
