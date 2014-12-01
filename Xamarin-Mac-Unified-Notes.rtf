@@ -851,10 +851,25 @@ BundleIdentifier not set.
 
 \i \cf0 Removed old \'93MonoMac\'94 namespace qualifier from several types.\
 \
+
+\i0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\fs36 \cf0 ImageKitDemo
+\fs24 \
 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 Removed old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \
 \
-\
+	MainWindowController.cs(83,18): error CS0266: Cannot implicitly convert type `System.nint' to `int'. An explicit conversion exists (are you missing a cast?)\
+	BrowseData.cs(41,61): error CS0034: Operator `<' is ambiguous on operands of type `System.nuint' and `int'\
+	DragDelegate.cs(60,21): error CS0034: Operator `<' is ambiguous on operands of type `int' and `System.nuint'\
+	DragDelegate.cs(63,43): error CS1502: The best overloaded method match for `ImageKitDemo.BrowseData.AddImages(Foundation.NSUrl, int)' has some invalid arguments\
+	DragDelegate.cs(64,46): error CS1503: Argument `#2' cannot convert `System.nint' expression to type `int'\
 \
 
+\i Fix: changed int to uint where required. Cast nint to int in call to AddImages.
 \i0 \
 }
