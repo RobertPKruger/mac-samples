@@ -599,7 +599,9 @@ MyDrawerDelegate.cs(53,25): error CS0115: `DrawerMadness.MyDrawerDelegate.Drawer
 	MyDrawerDelegate.cs(67,57): error CS1503: Argument `#1' cannot convert `System.nfloat' expression to type `float'\
 \
 \
-Fixes: Changed SizeF to CGSize. Changed float to nfloat.\
+
+\i Fixes: Changed SizeF to CGSize. Changed float to nfloat.
+\i0 \
 \
 \
 \
@@ -621,8 +623,34 @@ Fixes: Changed SizeF to CGSize. Changed float to nfloat.\
 \i0 \
 \
 \
+
+\fs36 FSEventWatcher
+\fs24 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 Removed old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \
+\pard\pardeftab720
+\cf0 \
+	FSEventDataSource.cs(34,23): error CS0508: `FSEventWatcher.FSEventDataSource.GetRowCount(AppKit.NSTableView)': return type must be `System.nint' to match overridden member `AppKit.NSTableViewDataSource.GetRowCount(AppKit.NSTableView)'\
+	FSEventDataSource.cs(39,28): error CS0115: `FSEventWatcher.FSEventDataSource.GetObjectValue(AppKit.NSTableView, AppKit.NSTableColumn, int)' is marked as an override but no suitable method found to override\
+\
+	MainWindowController.cs(34,47): error CS1502: The best overloaded method match for `FSEventWatcher.MainWindowController.UpdateLatency(int, bool)' has some invalid arguments\
+	MainWindowController.cs(34,77): error CS1503: Argument `#1' cannot convert `System.nint' expression to type `int'\
+	MainWindowController.cs(35,47): error CS1502: The best overloaded method match for `FSEventWatcher.MainWindowController.UpdateLatency(int, bool)' has some invalid arguments\
+	MainWindowController.cs(35,79): error CS1503: Argument `#1' cannot convert `System.nint' expression to type `int'\
+	FSEventDataSource.cs(41,18): error CS1502: The best overloaded method match for `System.Collections.Generic.List<FSEventWatcher.FSEventDataSource.Row>.this[int]' has some invalid arguments\
+	FSEventDataSource.cs(41,19): error CS1503: Argument `#1' cannot convert `System.nint' expression to type `int'\
 \
 \
+
+\i Fix: Changed ints to nint. Cast nint to int in indexers and in enum conversions. 
+\i0 \
 \
+BundleIdentifier not set.\
 \
+
+\i Fix: Added \'93com.xamarin.fseventwatcher\'94 to info.plist.
+\i0 \
 }
