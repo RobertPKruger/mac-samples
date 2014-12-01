@@ -573,7 +573,7 @@ Changed to this:\
 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\i \cf0 Removed  old \'93MonoMac\'94 namespace qualifier from several types.
+\i \cf0 Removed old \'93MonoMac\'94 namespace qualifier from several types.
 \i0 \
 \pard\pardeftab720
 \cf0 \
@@ -601,6 +601,24 @@ MyDrawerDelegate.cs(53,25): error CS0115: `DrawerMadness.MyDrawerDelegate.Drawer
 \
 Fixes: Changed SizeF to CGSize. Changed float to nfloat.\
 \
+\
+\
+
+\fs36 Fire
+\fs24 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 Removed old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \
+\pard\pardeftab720
+\cf0 \
+	MainWindowController.cs(34,23): error CS1502: The best overloaded method match for `System.Drawing.PointF.PointF(float, float)' has some invalid arguments\
+	MainWindowController.cs(34,47): error CS1503: Argument `#1' cannot convert `System.nfloat' expression to type `float'\
+\
+
+\i Fix: changed PointF to CGPoint.
+\i0 \
 \
 \
 \
