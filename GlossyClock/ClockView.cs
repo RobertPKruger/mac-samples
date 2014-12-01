@@ -5,14 +5,14 @@ using System.Linq;
 using System.Drawing;
 using System.Timers;
 
-using MonoMac.Foundation;
-using MonoMac.AppKit;
-using MonoMac.CoreAnimation;
-using MonoMac.CoreGraphics;
+using Foundation;
+using AppKit;
+using CoreAnimation;
+using CoreGraphics;
 
 namespace GlossyClock
 {
-	public partial class ClockView : MonoMac.AppKit.NSView
+	public partial class ClockView : AppKit.NSView
 	{
 		CALayer backgroundLayer;
 		CATextLayer clockFaceLayer;
@@ -71,7 +71,7 @@ namespace GlossyClock
 		{
 			CALayer borderLayer = CALayer.Create();
 			
-			RectangleF borderRect = Frame.Inset (8, 8);
+			CGRect borderRect = Frame.Inset (8, 8);
 			borderLayer.CornerRadius = 12;
 			borderLayer.BorderColor = new CGColor (1, 1, 1, 1);
 			borderLayer.BorderWidth = 2;
@@ -88,7 +88,7 @@ namespace GlossyClock
 			};
 			clockFaceLayer.Bind ("string", clockTimer, "outputString", null);
 			
-			clockFaceLayer.SetFont ("Menlo");
+			clockFaceLayer.SetFont ("Menlo-Regular");
 			
 			// Constrain the text layer in the middle
 			var constraint = CAConstraint.Create (CAConstraintAttribute.MidX, "superlayer", CAConstraintAttribute.MidX);
@@ -104,7 +104,7 @@ namespace GlossyClock
 		{
 			// Create the CGImage by proxying it through an NSImage
 			string filePath = NSBundle.MainBundle.PathForResource("clock-gloss","png");
-			var rect = RectangleF.Empty;
+			var rect = CGRect.Empty;
 			var glossyImage = new NSImage (filePath).AsCGImage (ref rect, null, null);
 
 			CALayer glossLayer = new CALayer() {

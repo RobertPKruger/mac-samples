@@ -708,10 +708,33 @@ Fix: changed to NSView.GlobalFrameChangedNotification.\
 Sigabrt error.\cf0 \
 \
 
+\fs36 GlossyClock
+\fs24 \
+
 \f1 \cf7 \
-\
-\uc0\u8232 
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\i \cf0 Removed old \'93MonoMac\'94 namespace qualifier from several types.
+\f1\i0 \cf7 \
+\pard\pardeftab720
+
 \f0 \cf0 \
 \
+	ClockView.cs(74,34): error CS0266: Cannot implicitly convert type `CoreGraphics.CGRect' to `System.Drawing.RectangleF'. An explicit conversion exists (are you missing a cast?)\
+	ClockView.cs(108,45): error CS1502: The best overloaded method match for `AppKit.NSImage.AsCGImage(ref CoreGraphics.CGRect, AppKit.NSGraphicsContext, Foundation.NSDictionary)' has some invalid arguments\
+	ClockView.cs(108,60): error CS1503: Argument `#1' cannot convert `ref System.Drawing.RectangleF' expression to type `ref CoreGraphics.CGRect'\
 \
+Fix: Changed RectangleF to CGRect.\
+\
+Warning:\
+\
+ClockTimer.cs(12,11): warning CS0414: The private field `GlossyClock.ClockTimer.myTTimer' is assigned but its value is never used\
+\
+Fix: none. Warning is incorrect.\
+\
+Runtime note:\
+\
+\cf3 2014-11-30 20:44:13.839 GlossyClock[30339:707] CoreText performance note: Client called CTFontCreateWithName() using name "Menlo" and got font with PostScript name "Menlo-Regular". For best performance, only use PostScript names when calling this API.\cf0 \
+\
+Changed string in Clockview.cs line 91 to \'93Menlo-Regular\'94\
 }
