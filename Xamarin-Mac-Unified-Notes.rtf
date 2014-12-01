@@ -887,12 +887,53 @@ BundleIdentifier not set.
 	MyDocument.cs(23,39): error CS1502: The best overloaded method match for `AppKit.NSDocument.NSDocument(Foundation.NSObjectFlag)' has some invalid arguments\
 	MyDocument.cs(23,45): error CS1503: Argument `#1' cannot convert `Foundation.NSCoder' expression to type `Foundation.NSObjectFlag'\
 \
-Constructor apparently changed that takes NSCoder, which used to be used for reconstituting a document from data.\
+\cf3 Constructor apparently changed that takes NSCoder, which used to be used for reconstituting a document from data, so commented out NSCoder constructor.\cf0 \
+\
+Added \'93com.xamarin.markdownviewer\'94 name to info.plist bundleidentifier.\
 \
 \
+Warning:\
+\
+MMPTASK:  warning MM2006: Native library 'libsundown.dylib' was referenced but could not be found.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\fs36 \cf0 MonoMacGameWindow
+\fs24 \
 \
 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 Removed old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \
 \
+	MonoMacGameWindowController.cs(105,42): error CS0266: Cannot implicitly convert type `CoreGraphics.CGRect' to `System.Drawing.RectangleF'. An explicit conversion exists (are you missing a cast?)\
+	MyOpenGLView.cs(53,11): error CS1502: The best overloaded method match for `MonoMacGameView.Scene.ResizeGLScene(System.Drawing.RectangleF)' has some invalid arguments\
+	MyOpenGLView.cs(53,25): error CS1503: Argument `#1' cannot convert `CoreGraphics.CGRect' expression to type `System.Drawing.RectangleF'\
+\
+ 	MonoMacGameWindowController.cs(120,15): error CS1502: The best overloaded method match for `System.Drawing.RectangleF.RectangleF(float, float, float, float)' has some invalid arguments\
+	MonoMacGameWindowController.cs(120,58): error CS1503: Argument `#3' cannot convert `System.nfloat' expression to type `float'\
+	MonoMacGameWindowController.cs(122,21): error CS1502: The best overloaded method match for `MonoMacGameView.MyOpenGLView.MyOpenGLView(System.Drawing.RectangleF, AppKit.NSOpenGLContext)' has some invalid arguments\
+	MonoMacGameWindowController.cs(122,39): error CS1503: Argument `#1' cannot convert `CoreGraphics.CGRect' expression to type `System.Drawing.RectangleF'\
+	MyOpenGLView.cs(53,11): error CS1502: The best overloaded method match for `MonoMacGameView.Scene.ResizeGLScene(System.Drawing.RectangleF)' has some invalid arguments\
+	MyOpenGLView.cs(53,25): error CS1503: Argument `#1' cannot convert `CoreGraphics.CGRect' expression to type `System.Drawing.RectangleF'\
+\
+
+\i Fix: changed RectangleF to CGRect.
+\i0 \
+\
+\
+\cf3 Runtime errors:\
+\
+2014-12-01 10:06:05.021 MonoMacGameView[30992:707] *** Assertion failure in -[MyOpenGLView initWithFrame:], /SourceCache/AppKit/AppKit-1265.21/AppKit.subproj/NSView.m:1610\
+2014-12-01 10:06:05.296 MonoMacGameView[30992:707] An uncaught exception was raised\
+2014-12-01 10:06:05.345 MonoMacGameView[30992:707] Frame containing non-finite values \{\{0, 0\}, \{nan, nan\}\} passed to [MyOpenGLView initWithFrame:]\
+\
+\'85\
+\
+Got a SIGABRT while executing native code. This usually indicates\
+a fatal error in the mono runtime or one of the native libraries \
+used by your application.\cf0 \
 \
 \
 \

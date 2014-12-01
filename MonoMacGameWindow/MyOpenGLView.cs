@@ -28,15 +28,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
 
-using MonoMac.Foundation;
-using MonoMac.AppKit;
-using MonoMac.CoreVideo;
-using MonoMac.CoreGraphics;
-using MonoMac.OpenGL;
+using Foundation;
+using AppKit;
+using CoreVideo;
+using CoreGraphics;
+using OpenGL;
 
 namespace MonoMacGameView
 {
-	public partial class MyOpenGLView : MonoMac.OpenGL.MonoMacGameView
+	public partial class MyOpenGLView : OpenGL.MonoMacGameView
 	{
 		Scene scene;
 		
@@ -45,7 +45,7 @@ namespace MonoMacGameView
 		{
 		}
 
-		public MyOpenGLView (RectangleF frame, NSOpenGLContext context) : base(frame, context)
+		public MyOpenGLView (CGRect frame, NSOpenGLContext context) : base(frame, context)
 		{
 			scene = new Scene();
 			

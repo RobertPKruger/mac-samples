@@ -11,19 +11,19 @@
 namespace MonoMacGameView {
 	
 	
-	// Should subclass MonoMac.AppKit.NSWindow
-	[MonoMac.Foundation.Register("MonoMacGameWindow")]
+	// Should subclass AppKit.NSWindow
+	[Foundation.Register("MonoMacGameWindow")]
 	public partial class MonoMacGameWindow {
 	}
 	
-	// Should subclass MonoMac.AppKit.NSWindowController
-	[MonoMac.Foundation.Register("MonoMacGameWindowController")]
+	// Should subclass AppKit.NSWindowController
+	[Foundation.Register("MonoMacGameWindowController")]
 	public partial class MonoMacGameWindowController {
 		
 		private MyOpenGLView __mt_openGLView;
 		
 		#pragma warning disable 0169
-		[MonoMac.Foundation.Connect("openGLView")]
+		[Foundation.Connect("openGLView")]
 		private MyOpenGLView openGLView {
 			get {
 				this.__mt_openGLView = ((MyOpenGLView)(this.GetNativeField("openGLView")));
@@ -36,8 +36,8 @@ namespace MonoMacGameView {
 		}
 	}
 	
-	// Should subclass MonoMac.AppKit.NSView
-	[MonoMac.Foundation.Register("MyOpenGLView")]
+	// Should subclass AppKit.NSView
+	[Foundation.Register("MyOpenGLView")]
 	public partial class MyOpenGLView {
 	}
 }

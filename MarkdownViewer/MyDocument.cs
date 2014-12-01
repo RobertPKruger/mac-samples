@@ -19,10 +19,10 @@ namespace Markdown
 		{
 		}
 
-		[Export ("initWithCoder:")]
-		public MyDocument (NSCoder coder) : base(coder)
-		{
-		}
+//		[Export ("initWithCoder:")]
+//		public MyDocument (NSCoder coder) : base(coder)
+//		{
+//		}
 
 		class MarkdownWebUIDelegate : WebUIDelegate
 		{
