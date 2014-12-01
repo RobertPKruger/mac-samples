@@ -44,7 +44,7 @@ namespace GLSLShader
 		NSObject notificationProxy;
 
 		[Export("initWithFrame:")]
-		public MyOpenGLView (RectangleF frame) : this(frame, null)
+		public MyOpenGLView (CGRect frame) : this(frame, null)
 		{
 		}
 
@@ -54,8 +54,8 @@ namespace GLSLShader
 				NSOpenGLPixelFormatAttribute.Accelerated,
 				NSOpenGLPixelFormatAttribute.NoRecovery,
 				NSOpenGLPixelFormatAttribute.DoubleBuffer,
-				NSOpenGLPixelFormatAttribute.ColorSize, 24,
-				NSOpenGLPixelFormatAttribute.DepthSize, 16 };
+				NSOpenGLPixelFormatAttribute.ColorSize, 
+				NSOpenGLPixelFormatAttribute.DepthSize };
 
 			pixelFormat = new NSOpenGLPixelFormat (attribs);
 

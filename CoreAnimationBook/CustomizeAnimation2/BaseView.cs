@@ -23,7 +23,7 @@ namespace CustomizeAnimation
 		public BaseView (NSCoder coder) : base(coder) {}
 
 		[Export("initWithFrame:")]
-		public BaseView (RectangleF frame) : base(frame)
+		public BaseView (CGRect frame) : base(frame)
 		{
 			InitializeFramePositions();
 			AddImageToSubview();

@@ -20,7 +20,7 @@ namespace CustomAnimationTiming
 		public CustomAnimationTiming (NSCoder coder) : base(coder) {}
 
 		[Export("initWithFrame:")]
-		public CustomAnimationTiming (RectangleF frame) : base(frame)
+		public CustomAnimationTiming (CGRect frame) : base(frame)
 		{
 			SetupMover ();
 		}

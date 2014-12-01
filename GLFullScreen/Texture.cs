@@ -59,7 +59,7 @@ namespace GLFullScreen
                         // This avoids unnecessary blending.
                         context.SetBlendMode (CGBlendMode.Copy);
                         
-                        context.DrawImage (new RectangleF (0, 0, width, height), image);
+                        context.DrawImage (new CGRect (0, 0, width, height), image);
                 }
 
                 void LoadTexture ()

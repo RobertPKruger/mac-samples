@@ -1,7 +1,8 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-Italic;
+}
 {\colortbl;\red255\green255\blue255;\red164\green8\blue0;\red217\green11\blue0;\red14\green0\blue45;
-\red255\green39\blue18;\red51\green100\blue164;\red51\green51\blue51;\red245\green125\blue0;\red0\green150\blue149;
+\red255\green39\blue18;\red51\green51\blue51;\red51\green100\blue164;\red245\green125\blue0;\red0\green150\blue149;
 }
 \margl1440\margr1440\vieww19200\viewh13700\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
@@ -170,18 +171,7 @@ Removed  old \'93MonoMac\'94 namespace qualifier from several types.\
 \
 Fix: Changed RectangleF to CGRect and PointF to CGPoint.\
 \
-\cf2 Runtime errors, beginning with:\
-\
-2014-11-26 13:09:56.625 CustomAnimationTiming[24517:707] *** Assertion failure in -[CustomAnimationTiming initWithFrame:], /SourceCache/AppKit/AppKit-1265.21/AppKit.subproj/NSView.m:1610\
-2014-11-26 13:09:56.627 CustomAnimationTiming[24517:707] An uncaught exception was raised\
-2014-11-26 13:09:56.627 CustomAnimationTiming[24517:707] Frame containing non-finite values \{\{0, 0\}, \{nan, 3.5733110840282835e-43\}\} passed to [CustomAnimationTiming initWithFrame:]\
-\cf0 \
-\cf3 \'85\cf0 \
-\
-\cf3 Got a SIGABRT while executing native code. This usually indicates\
-a fatal error in the mono runtime or one of the native libraries \
-used by your application.\
-\
+\cf3 \
 \
 
 \i0\b \cf0 CustomizeAnimation
@@ -194,18 +184,7 @@ used by your application.\
 \
 Fix: Changed PointF to CGPoint.\
 \
-\cf3 Runtime Errors:\
-\
-2014-11-26 13:12:21.824 CustomizeAnimation[24537:707] *** Assertion failure in -[MyView initWithFrame:], /SourceCache/AppKit/AppKit-1265.21/AppKit.subproj/NSView.m:1610\
-2014-11-26 13:12:21.825 CustomizeAnimation[24537:707] An uncaught exception was raised\
-2014-11-26 13:12:21.826 CustomizeAnimation[24537:707] Frame containing non-finite values \{\{0, 0\}, \{nan, 9.1834094859526887e-41\}\} passed to [MyView initWithFrame:]\
-\
-\'85\
-\
-Got a SIGABRT while executing native code. This usually indicates\
-a fatal error in the mono runtime or one of the native libraries \
-used by your application.\
-\
+\cf3 \
 
 \i0 \cf4 \
 
@@ -227,22 +206,6 @@ used by your application.\
 \
 
 \i \cf0 Fix: Changed RectangleF to CGRect and PointF to CGPoint.
-\i0 \cf4 \
-\
-
-\i \cf3 Runtime Errors:\
-
-\i0 \cf4 \
-
-\i \cf3 2014-11-26 13:37:26.684 CustomizeAnimation[24583:707] *** Assertion failure in -[BaseView initWithFrame:], /SourceCache/AppKit/AppKit-1265.21/AppKit.subproj/NSView.m:1610\
-2014-11-26 13:37:26.688 CustomizeAnimation[24583:707] An uncaught exception was raised\
-2014-11-26 13:37:26.689 CustomizeAnimation[24583:707] Frame containing non-finite values \{\{0, 0\}, \{nan, nan\}\} passed to [BaseView initWithFrame:]\
-\
-\'85\
-\
-Got a SIGABRT while executing native code. This usually indicates\
-a fatal error in the mono runtime or one of the native libraries \
-used by your application.
 \i0 \cf4 \
 \
 \
@@ -449,15 +412,17 @@ Cannot create node of class "BackdropsQCQuickTimePlayer" and identifier "(null)"
 	CoreTextArcView.cs(207,91): error CS1503: Argument `#2' cannot convert `System.nfloat' expression to type `float'\
 	CoreTextArcView.cs(215,48): error CS0266: Cannot implicitly convert type `System.nint' to `int'. An explicit conversion exists (are you missing a cast?)\
 \
+\cf5 \
 \
+
+\i \cf0 Turns out the following RectangleF was not caught by compiler. Changed to CGRect
+\i0 \cf5 \
 \
-\cf5 Multiple runtime errors, beginning:\
-\cf4 \
-\cf3 2014-11-26 18:01:31.627 CoreTextArcMonoMac[25265:707] *** Assertion failure in -[CoreTextArcView initWithFrame:], /SourceCache/AppKit/AppKit-1265.21/AppKit.subproj/NSView.m:1610\
-2014-11-26 18:01:31.764 CoreTextArcMonoMac[25265:707] An uncaught exception was raised\
-2014-11-26 18:01:31.765 CoreTextArcMonoMac[25265:707] Frame containing non-finite values \{\{0, 0\}, \{nan, nan\}\} passed to [CoreTextArcView initWithFrame:]\cf5 \
-\
-\
+\pard\pardeftab720
+
+\f1 \cf6 [\cf7 Export\cf6 (\cf8 "initWithFrame:"\cf6 )]\uc0\u8232 \cf9 public\cf6  \cf7 CoreTextArcView\cf6  (\cf7 RectangleF\cf6  frame) : \cf9 base\cf6 (frame)\uc0\u8232 
+\f0 \cf5 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 \cf0 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
@@ -534,14 +499,14 @@ Fix: This:\
 \
 \pard\pardeftab720
 
-\f1 \cf6 NSTimer\cf7 .CreateScheduledTimer (\cf8 3.0\cf7 , () => \cf6 NSApplication\cf7 .SharedApplication.RequestUserAttention (type));\uc0\u8232 
+\f1 \cf7 NSTimer\cf6 .CreateScheduledTimer (\cf8 3.0\cf6 , () => \cf7 NSApplication\cf6 .SharedApplication.RequestUserAttention (type));\uc0\u8232 
 \f0 \cf0 \
 Changed to this:\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 \cf0 \
 \pard\pardeftab720
 
-\f1 \cf6 NSTimer\cf7 .CreateScheduledTimer (\cf8 3.0\cf7 , \cf9 new\cf7  \cf6 Action\cf7 <\cf6 NSTimer\cf7 >((x) => \cf6 NSApplication\cf7 .SharedApplication.RequestUserAttention (type)));\uc0\u8232 
+\f1 \cf7 NSTimer\cf6 .CreateScheduledTimer (\cf8 3.0\cf6 , \cf9 new\cf6  \cf7 Action\cf6 <\cf7 NSTimer\cf6 >((x) => \cf7 NSApplication\cf6 .SharedApplication.RequestUserAttention (type)));\uc0\u8232 
 \f0 \cf0 \
 \
 \
@@ -561,7 +526,7 @@ Changed to this:\
 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\i \cf3 Fix: commented out constructor that takes NSObjectFlag. That breaks MyDocument apparently, but at least it compiles. See CoreTextArcMonoMac.
+\i \cf3 Fix: commented out constructor that takes NSObjectFlag. See CoreTextArcMonoMac.
 \i0 \cf0 \
 \pard\pardeftab720
 \cf0 \
@@ -688,36 +653,38 @@ BundleIdentifier not set.\
 	Texture.cs(46,40): error CS0266: Cannot implicitly convert type `System.nint' to `int'. An explicit conversion exists (are you missing a cast?)\
 \
 \
-Fix: changed RectangleF to CGRect, PointF to CGPoint, float to nfloat, int to nint. Cast a few nints to ints in function call to CGBitmapContext.\
+
+\i Fix: changed RectangleF to CGRect, PointF to CGPoint, float to nfloat, int to nint. Cast a few nints to ints in function call to CGBitmapContext.
+\i0 \
 \
 \
 	MyOpenGLView.cs(56,79): error CS0117: `AppKit.NSView' does not contain a definition for `NSViewGlobalFrameDidChangeNotification'\
 \
-Fix: changed to NSView.GlobalFrameChangedNotification.\
+
+\i Fix: changed to NSView.GlobalFrameChangedNotification.
+\i0 \
 \
 
-\f1 \cf3 Runtime warning, starting with:\
+\f1 \cf3 \
+The following numbers \'97 24, 16 \'97 did not track to enum values and thus caused a cast error at runtime:\
 \
-2014-11-30 18:53:32.854 GLFullScreen[30217:707] *** Assertion failure in -[MyOpenGLView initWithFrame:], /SourceCache/AppKit/AppKit-1265.21/AppKit.subproj/NSView.m:1610\
-2014-11-30 18:53:33.779 GLFullScreen[30217:707] An uncaught exception was raised\
-2014-11-30 18:53:33.789 GLFullScreen[30217:707] Frame containing non-finite values \{\{0, 0\}, \{nan, nan\}\} passed to [MyOpenGLView initWithFrame:]\cf7 \
+\cf6 			\cf9 var\cf6  attribs = \cf9 new\cf6  \cf9 object\cf6  [] \{\uc0\u8232 				\cf7 NSOpenGLPixelFormatAttribute\cf6 .Accelerated,\uc0\u8232 				\cf7 NSOpenGLPixelFormatAttribute\cf6 .NoRecovery,\uc0\u8232 				\cf7 NSOpenGLPixelFormatAttribute\cf6 .DoubleBuffer,\uc0\u8232 				\cf7 NSOpenGLPixelFormatAttribute\cf6 .ColorSize, \cf8 24\cf6 ,\uc0\u8232 				\cf7 NSOpenGLPixelFormatAttribute\cf6 .DepthSize, \cf8 16\cf6  \};\
+\
+
+\f2\i Fix: Took them out for now.
+\f1\i0 \uc0\u8232 \cf3 \
 
 \f0 \cf0 \
-\cf3 \'85\
-\
-Got a SIGABRT while executing native code. This usually indicates\
-a fatal error in the mono runtime or one of the native libraries \
-used by your application.\cf0 \
 \
 
 \fs36 GlossyClock
 \fs24 \
 
-\f1 \cf7 \
+\f1 \cf6 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
 \f0\i \cf0 Removed old \'93MonoMac\'94 namespace qualifier from several types.
-\f1\i0 \cf7 \
+\f1\i0 \cf6 \
 \pard\pardeftab720
 
 \f0 \cf0 \
@@ -738,7 +705,9 @@ Runtime note:\
 \
 \cf3 2014-11-30 20:44:13.839 GlossyClock[30339:707] CoreText performance note: Client called CTFontCreateWithName() using name "Menlo" and got font with PostScript name "Menlo-Regular". For best performance, only use PostScript names when calling this API.\cf0 \
 \
-Changed string in Clockview.cs line 91 to \'93Menlo-Regular\'94\
+
+\i Fix: changed string in Clockview.cs line 91 to \'93Menlo-Regular\'94
+\i0 \
 \
 \
 \
@@ -768,18 +737,6 @@ MyOpenGLView.cs(82,24): error CS0115: `GLSLShader.MyOpenGLView.DrawRect(System.D
 
 \i \cf0 Fix: changed to NSView.GlobalFrameChangedNotification.
 \i0 \
-\
-\cf3 Runtime Errors, beginning with:\
-\
-2014-11-30 21:20:51.506 GLSLShader[30455:707] *** Assertion failure in -[MyOpenGLView initWithFrame:], /SourceCache/AppKit/AppKit-1265.21/AppKit.subproj/NSView.m:1610\
-2014-11-30 21:20:51.507 GLSLShader[30455:707] An uncaught exception was raised\
-2014-11-30 21:20:51.507 GLSLShader[30455:707] Frame containing non-finite values \{\{0, 0\}, \{nan, nan\}\} passed to [MyOpenGLView initWithFrame:]\
-\
-\'85\
-\
-Got a SIGABRT while executing native code. This usually indicates\
-a fatal error in the mono runtime or one of the native libraries \
-used by your application.\cf0 \
 \
 \
 \
@@ -816,13 +773,13 @@ used by your application.\cf0 \
 Changed this:\
 \
 
-\f1 \cf7 beatTimer = \cf6 NSTimer\cf7 .CreateScheduledTimer (\cf8 60\cf7  / (\cf9 double\cf7 )CurrentHeartBeat.Rate, ScheduleBeatTimer);\uc0\u8232 
+\f1 \cf6 beatTimer = \cf7 NSTimer\cf6 .CreateScheduledTimer (\cf8 60\cf6  / (\cf9 double\cf6 )CurrentHeartBeat.Rate, ScheduleBeatTimer);\uc0\u8232 
 \f0 \cf0 \
 \
 To this:\
 \
 
-\f1 \cf7 beatTimer = \cf6 NSTimer\cf7 .CreateScheduledTimer (\cf8 60\cf7  / (\cf9 double\cf7 )CurrentHeartBeat.Rate, \cf9 new\cf7  \cf6 Action\cf7 <\cf6 NSTimer\cf7 >((x)=>ScheduleBeatTimer()));\uc0\u8232 
+\f1 \cf6 beatTimer = \cf7 NSTimer\cf6 .CreateScheduledTimer (\cf8 60\cf6  / (\cf9 double\cf6 )CurrentHeartBeat.Rate, \cf9 new\cf6  \cf7 Action\cf6 <\cf7 NSTimer\cf6 >((x)=>ScheduleBeatTimer()));\uc0\u8232 
 \f0 \cf0 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 \cf0 \
@@ -922,19 +879,10 @@ MMPTASK:  warning MM2006: Native library 'libsundown.dylib' was referenced but c
 \i Fix: changed RectangleF to CGRect.
 \i0 \
 \
+Constructor of MyOpenGlView throws cast exception at runtime:\
 \
-\cf3 Runtime errors:\
-\
-2014-12-01 10:06:05.021 MonoMacGameView[30992:707] *** Assertion failure in -[MyOpenGLView initWithFrame:], /SourceCache/AppKit/AppKit-1265.21/AppKit.subproj/NSView.m:1610\
-2014-12-01 10:06:05.296 MonoMacGameView[30992:707] An uncaught exception was raised\
-2014-12-01 10:06:05.345 MonoMacGameView[30992:707] Frame containing non-finite values \{\{0, 0\}, \{nan, nan\}\} passed to [MyOpenGLView initWithFrame:]\
-\
-\'85\
-\
-Got a SIGABRT while executing native code. This usually indicates\
-a fatal error in the mono runtime or one of the native libraries \
-used by your application.\cf0 \
-\
-\
-\
+\pard\pardeftab720
+
+\f1 \cf9 public\cf6  \cf7 MyOpenGLView\cf6  (\cf7 CGRect\cf6  frame, \cf7 NSOpenGLContext\cf6  context) : \cf9 base\cf6 (frame, context)\uc0\u8232 
+\f0 \cf0 \
 }

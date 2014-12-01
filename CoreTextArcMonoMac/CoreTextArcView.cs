@@ -32,7 +32,7 @@ namespace CoreTextArcMonoMac
                 }
 
                 [Export("initWithFrame:")]
-                public CoreTextArcView (RectangleF frame) : base(frame)
+                public CoreTextArcView (CGRect frame) : base(frame)
                 {
                         Font = NSFont.FromFontName (ARCVIEW_DEFAULT_FONT_NAME, ARCVIEW_DEFAULT_FONT_SIZE);
                         Title = "Curvaceous MonoMac";

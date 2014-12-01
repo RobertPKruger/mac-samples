@@ -41,7 +41,7 @@ namespace MonoMacGameView
 		Scene scene;
 		
 		[Export("initWithFrame:")]
-		public MyOpenGLView (RectangleF frame) : this(frame, null)
+		public MyOpenGLView (CGRect frame):this(frame, null)
 		{
 		}
 
