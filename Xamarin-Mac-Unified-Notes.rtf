@@ -872,4 +872,28 @@ BundleIdentifier not set.
 
 \i Fix: changed int to uint where required. Cast nint to int in call to AddImages.
 \i0 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\fs36 \cf0 MarkdownViewer
+\fs24 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 Removed old \'93MonoMac\'94 namespace qualifier from several types.
+\i0 \
+\
+	MyDocument.cs(23,39): error CS1502: The best overloaded method match for `AppKit.NSDocument.NSDocument(Foundation.NSObjectFlag)' has some invalid arguments\
+	MyDocument.cs(23,45): error CS1503: Argument `#1' cannot convert `Foundation.NSCoder' expression to type `Foundation.NSObjectFlag'\
+\
+Constructor apparently changed that takes NSCoder, which used to be used for reconstituting a document from data.\
+\
+\
+\
+\
+\
+\
+\
+\
 }
