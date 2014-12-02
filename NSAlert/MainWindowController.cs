@@ -31,12 +31,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-using MonoMac.Foundation;
-using MonoMac.AppKit;
+using Foundation;
+using AppKit;
 
 namespace NSAlertSample
 {
-	public partial class MainWindowController : MonoMac.AppKit.NSWindowController
+	public partial class MainWindowController : AppKit.NSWindowController
 	{
 		#region Constructors
 		
@@ -63,9 +63,9 @@ namespace NSAlertSample
 		void Initialize ()
 		{
 			var timerCount = 0;
-			NSRunLoop.Current.AddTimer (NSTimer.CreateRepeatingTimer (TimeSpan.FromSeconds (0.1), () => {
+			NSRunLoop.Current.AddTimer (NSTimer.CreateRepeatingTimer (TimeSpan.FromSeconds (0.1), new Action<NSTimer>((x) => {
 				ModalCounter.StringValue = (timerCount++).ToString ();
-			}), NSRunLoopMode.Default);
+			})), NSRunLoopMode.Default);
 		}
 		
 		#endregion
@@ -77,7 +77,7 @@ namespace NSAlertSample
 			}
 		}
 
-		void ShowResponse (NSAlert alert, int response)
+		void ShowResponse (NSAlert alert, nint response)
 		{
 			string message;
 
@@ -105,7 +105,7 @@ namespace NSAlertSample
 						"\"{0}\"\n\nButton Index: {1}\nResult (NSAlertButtonReturn): {2}\nResult (int): {3}",
 						alert.Buttons [buttonIndex].Title,
 						buttonIndex,
-						(NSAlertButtonReturn)response,
+						(NSAlertButtonReturn)(int)response,
 						response);
 			}
 
